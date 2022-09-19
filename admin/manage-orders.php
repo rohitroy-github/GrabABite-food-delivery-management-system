@@ -19,11 +19,56 @@
     <?php include 'partials/menu.php'; ?>
 
     <!-- Main Content Section-->
+
     <div class="main-content">
       <div class="wrapper">
         <h2 style="text-align: center">Manage Orders</h2>
+
+        <br />
+
+        <table class="tbl-full">
+
+          <tr>
+            <th>Serial Number</th>
+            <th>Fullname</th>
+            <th>Username</th>
+            <th>Actions</th>
+          </tr>
+
+          <tr>
+            <td>1.</td>
+            <td>Rohit Roy</td>
+            <td>rohitroy</td>
+            <td>
+              <a href="#" class="btn-table">Update Admin</a>
+              <a href="#" class="btn-table">Delete Admin</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>1.</td>
+            <td>Rohit Roy</td>
+            <td>rohitroy</td>
+            <td>
+              <a href="#" class="btn-table">Update Admin</a>
+              <a href="#" class="btn-table">Delete Admin</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>1.</td>
+            <td>Rohit Roy</td>
+            <td>rohitroy</td>
+            <td>
+              <a href="#" class="btn-table">Update Admin</a>
+              <a href="#" class="btn-table">Delete Admin</a>
+            </td>
+          </tr>
+
+        </table>
       </div>
     </div>
+
     <!-- Footer Section -->
 
     <?php include 'partials/footer.php'; ?>

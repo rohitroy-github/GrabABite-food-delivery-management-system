@@ -30,9 +30,10 @@
 
         <a href="#" class="btn-new-admin">Add New Admin</a>
 
-        <br /><br /><br />
+        <br /><br />
 
         <table class="tbl-full">
+
           <tr>
             <th>Serial Number</th>
             <th>Fullname</th>
@@ -49,6 +50,27 @@
               <a href="#" class="btn-table">Delete Admin</a>
             </td>
           </tr>
+
+          <tr>
+            <td>1.</td>
+            <td>Rohit Roy</td>
+            <td>rohitroy</td>
+            <td>
+              <a href="#" class="btn-table">Update Admin</a>
+              <a href="#" class="btn-table">Delete Admin</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>1.</td>
+            <td>Rohit Roy</td>
+            <td>rohitroy</td>
+            <td>
+              <a href="#" class="btn-table">Update Admin</a>
+              <a href="#" class="btn-table">Delete Admin</a>
+            </td>
+          </tr>
+
         </table>
       </div>
     </div>
