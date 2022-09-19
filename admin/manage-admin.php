@@ -28,7 +28,7 @@
 
         <!-- Button to add new admin -->
 
-        <a href="#" class="btn-new-admin">Add New Admin</a>
+        <a href="add-admin.php" class="btn-new-admin">Add New Admin</a>
 
         <br /><br />
 
