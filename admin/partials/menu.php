@@ -1,5 +1,3 @@
-<!-- Main CMS/ Admin file  -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin.css" />
 
     <!-- Latest compiled and minified CSS -->
     <link
@@ -36,46 +34,16 @@
   </head>
   <body>
     <!-- Menu Section -->
-
-    <?php include 'partials/menu.php'; ?>
-
-    <!-- Main Content Section-->
-    <div class="main-content"> 
-        <div class="wrapper">
-            
-            <h2 style="text-align: center">Main Dashboard</h2>
-
-            <div class="col-4">
-                <h1>5</h1>
-                <br />
-                Categories
-            </div>
-
-            <div class="col-4">
-                <h1>5</h1>
-                <br />
-                Categories
-            </div>
-
-            <div class="col-4">
-                <h1>5</h1>
-                <br />
-                Categories
-            </div>
-
-            <div class="col-4">
-                <h1>5</h1>
-                <br />
-                Categories
-            </div>
-
-            <div class="clearfix"></div>
-
-        </div>
+    <div class="menu">
+      <div class="wrapper">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Admin</a></li>
+          <li><a href="#">Category</a></li>
+          <li><a href="#">Food</a></li>
+          <li><a href="#">Order</a></li>
+        </ul>
+      </div>
     </div>
-    <!-- Footer Section -->
-
-    <?php include 'partials/footer.php'; ?>
-
   </body>
 </html>
