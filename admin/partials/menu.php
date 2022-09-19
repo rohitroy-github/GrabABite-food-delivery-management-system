@@ -12,6 +12,10 @@
     <title>Food Ordering App - Home Page</title>
   </head>
   <body>
+
+  <!-- Adding DB connection code in menu to get applied in all the pages simultaneously -->
+  <?php include('../config/constants.php'); ?>
+
     <!-- Menu Section -->
     <div class="menu">
       <div class="wrapper">
