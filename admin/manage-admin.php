@@ -9,28 +9,7 @@
 
     <link rel="stylesheet" href="../css/admin.css" />
 
-    <!-- Latest compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
-      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
-      crossorigin="anonymous"
-    />
-
-    <!-- Optional theme -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
-      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
-      crossorigin="anonymous"
-    />
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
-      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Add Bootstrap Code -->
 
     <title>Food Ordering App - Home Page</title>
   </head>
@@ -40,14 +19,42 @@
     <?php include 'partials/menu.php'; ?>
 
     <!-- Main Content Section-->
+
     <div class="main-content">
       <div class="wrapper">
         <h2 style="text-align: center">Admin Panel</h2>
+
+        <br />
+
+        <!-- Button to add new admin -->
+
+        <a href="#" class="btn-new-admin">Add New Admin</a>
+
+        <br /><br /><br />
+
+        <table class="tbl-full">
+          <tr>
+            <th>Serial Number</th>
+            <th>Fullname</th>
+            <th>Username</th>
+            <th>Actions</th>
+          </tr>
+
+          <tr>
+            <td>1.</td>
+            <td>Rohit Roy</td>
+            <td>rohitroy</td>
+            <td>
+              <a href="#" class="btn-table">Update Admin</a>
+              <a href="#" class="btn-table">Delete Admin</a>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
+
     <!-- Footer Section -->
 
     <?php include 'partials/footer.php'; ?>
-    
   </body>
 </html>
