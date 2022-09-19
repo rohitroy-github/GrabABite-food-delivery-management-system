@@ -1,3 +1,5 @@
+<!-- Manage Food Panel -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,16 +36,17 @@
   </head>
   <body>
     <!-- Menu Section -->
-    <div class="menu">
+
+    <?php include 'partials/menu.php'; ?>
+
+    <!-- Main Content Section-->
+    <div class="main-content">
       <div class="wrapper">
-        <ul>
-          <li><a href="index.php">Home</a></li>
-          <li><a href="manage-admin.php">Admin Panel</a></li>
-          <li><a href="manage-category.php">Categories</a></li>
-          <li><a href="manage-food.php">Food</a></li>
-          <li><a href="manage-orders.php">Orders</a></li>
-        </ul>
+        <h2 style="text-align: center">Manage Food</h2>
       </div>
     </div>
+    <!-- Footer Section -->
+
+    <?php include 'partials/footer.php'; ?>
   </body>
 </html>

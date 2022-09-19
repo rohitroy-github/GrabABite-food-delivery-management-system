@@ -42,7 +42,7 @@
     <!-- Main Content Section-->
     <div class="main-content">
       <div class="wrapper">
-        <h2 style="text-align: center">Main Admin Panel</h2>
+        <h2 style="text-align: center">Admin Panel</h2>
       </div>
     </div>
     <!-- Footer Section -->
