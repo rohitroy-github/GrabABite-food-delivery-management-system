@@ -54,35 +54,39 @@ if(isset($_SESSION['add']))
             <th>Actions</th>
           </tr>
 
+          <?php
+          $sql = "SELECT * FROM tbl_admin"; 
+
+          $res = mysqli_query($conn, $sql); 
+
+          if($res == TRUE){ 
+            
+            // Count rows for checking data availibility
+            $count = mysqli_num_rows($res); 
+
+            $sn = 1; 
+
+            if($count > 0){
+               while($rows = mysqli_fetch_assoc($res)){ 
+                //Run as long as data is available 
+          $id = $rows['id']; $full_name = $rows['full_name'];
+          $username = $rows['username']; ?>
+
           <tr>
-            <td>1.</td>
-            <td>Rohit Roy</td>
-            <td>rohitroy</td>
+            <td><?php echo $sn++; ?></td>
+            <td><?php echo $full_name; ?></td>
+            <td><?php echo $username; ?></td>
             <td>
               <a href="#" class="btn-table">Update Admin</a>
               <a href="#" class="btn-table">Delete Admin</a>
             </td>
           </tr>
 
-          <tr>
-            <td>1.</td>
-            <td>Rohit Roy</td>
-            <td>rohitroy</td>
-            <td>
-              <a href="#" class="btn-table">Update Admin</a>
-              <a href="#" class="btn-table">Delete Admin</a>
-            </td>
-          </tr>
-
-          <tr>
-            <td>1.</td>
-            <td>Rohit Roy</td>
-            <td>rohitroy</td>
-            <td>
-              <a href="#" class="btn-table">Update Admin</a>
-              <a href="#" class="btn-table">Delete Admin</a>
-            </td>
-          </tr>
+          <?php
+              }
+            }
+          }
+          ?>
         </table>
       </div>
     </div>
