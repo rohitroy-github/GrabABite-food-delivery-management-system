@@ -42,6 +42,13 @@ if(isset($_SESSION['add']))
   unset($_SESSION['add']); 
 }
 
+if(isset($_SESSION['delete']))
+{ 
+  echo $_SESSION['delete'];
+  // Ending session 
+  unset($_SESSION['delete']); 
+}
+
 ?>
 
         <br />
@@ -78,7 +85,8 @@ if(isset($_SESSION['add']))
             <td><?php echo $username; ?></td>
             <td>
               <a href="#" class="btn-table">Update Admin</a>
-              <a href="#" class="btn-table">Delete Admin</a>
+
+              <a href="<?php echo HOMEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>" class="btn-table">Delete Admin</a>
             </td>
           </tr>
 
