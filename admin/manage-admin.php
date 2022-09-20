@@ -30,10 +30,23 @@
 
         <a href="add-admin.php" class="btn-new-admin">Add New Admin</a>
 
-        <br /><br />
+        <br /><br /><br />
+
+        <!-- Printing success message -->
+        <?php
+
+if(isset($_SESSION['add']))
+{ 
+  echo $_SESSION['add'];
+  // Ending session 
+  unset($_SESSION['add']); 
+}
+
+?>
+
+        <br />
 
         <table class="tbl-full">
-
           <tr>
             <th>Serial Number</th>
             <th>Fullname</th>
@@ -70,7 +83,6 @@
               <a href="#" class="btn-table">Delete Admin</a>
             </td>
           </tr>
-
         </table>
       </div>
     </div>

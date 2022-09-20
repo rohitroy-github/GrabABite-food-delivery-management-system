@@ -14,7 +14,6 @@
     <title>Food Ordering App - Home Page</title>
   </head>
   <body>
-    
     <!-- Menu Section -->
 
     <?php include 'partials/menu.php'; ?>
@@ -24,6 +23,16 @@
     <div class="main-content">
       <div class="wrapper">
         <h2 style="text-align: center">Add New Admin</h2>
+
+        <!-- Printing success message -->
+        <?php
+        if(isset($_SESSION['add']))
+        { 
+          echo $_SESSION['add'];
+          // Ending session 
+          unset($_SESSION['add']); 
+        }
+        ?>
 
         <form action="" method="POST">
           <table class="tbl-30">
@@ -106,20 +115,33 @@ if(isset($_POST['submit'])){
 
   // Execute query into database
 
-  // if query executed successfully > res = true else res = false 
-  // die > stop further processing
+  $res = mysqli_query($conn, $sql) or die(mysqli_error()); 
 
-  $conn = mysqli_connect('localhost', 'root', '') or die(mysqli_error());
+  // Check whether data is inserted ? 
 
-  $db_select = mysqli_select_db($conn, 'php-food-ordering-app-db') or die(mysqli_error());
+  if($res == TRUE){ 
+    
+    // Data inserted
 
-  // $res = mysqli_query($conn, $sql) or die(mysqli_error()); 
+    $_SESSION['add'] = "Admin added successfully !"; 
 
-  echo $sql;
+    // Redirect to ManageAdmin Page
+    header("location:".HOMEURL.'admin/manage-admin.php');
 
-}
-else{ 
-  "Not Clicked !";
+  }
+  else{ 
+
+    // Failed
+
+    $_SESSION['add'] = "Failed to add admin !";
+
+    // Redirect to addAdmin Page again
+    header("location:".HOMEURL.'admin/add-admin.php'); 
+
+  }
+
+  // echo $sql;
+
 }
 
 ?>
