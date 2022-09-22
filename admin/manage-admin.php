@@ -35,49 +35,49 @@
         <!-- Printing success message -->
         <?php
 
-if(isset($_SESSION['add']))
-{ 
-  echo $_SESSION['add'];
-  // Ending session 
-  unset($_SESSION['add']); 
-}
+          if(isset($_SESSION['add']))
+          { 
+            echo $_SESSION['add'];
+            // Ending session 
+            unset($_SESSION['add']); 
+          }
 
-if(isset($_SESSION['delete']))
-{ 
-  echo $_SESSION['delete'];
-  // Ending session 
-  unset($_SESSION['delete']); 
-}
+          if(isset($_SESSION['delete']))
+          { 
+            echo $_SESSION['delete'];
+            // Ending session 
+            unset($_SESSION['delete']); 
+          }
 
-if(isset($_SESSION['update']))
-{ 
-  echo $_SESSION['update'];
-  // Ending session 
-  unset($_SESSION['update']); 
-}
+          if(isset($_SESSION['update']))
+          { 
+            echo $_SESSION['update'];
+            // Ending session 
+            unset($_SESSION['update']); 
+          }
 
-if(isset($_SESSION['update-password']))
-{ 
-  echo $_SESSION['update-password'];
-  // Ending session 
-  unset($_SESSION['update-password']); 
-}
+          if(isset($_SESSION['update-password']))
+          { 
+            echo $_SESSION['update-password'];
+            // Ending session 
+            unset($_SESSION['update-password']); 
+          }
 
-if(isset($_SESSION['user-not-found']))
-{ 
-  echo $_SESSION['user-not-found'];
-  // Ending session 
-  unset($_SESSION['user-not-found']); 
-}
+          if(isset($_SESSION['user-not-found']))
+          { 
+            echo $_SESSION['user-not-found'];
+            // Ending session 
+            unset($_SESSION['user-not-found']); 
+          }
 
-if(isset($_SESSION['password-not-match']))
-{ 
-  echo $_SESSION['password-not-match'];
-  // Ending session 
-  unset($_SESSION['password-not-match']); 
-}
+          if(isset($_SESSION['password-not-match']))
+          { 
+            echo $_SESSION['password-not-match'];
+            // Ending session 
+            unset($_SESSION['password-not-match']); 
+          }
 
-?>
+        ?>
 
         <br />
 
