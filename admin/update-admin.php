@@ -94,15 +94,9 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
+    <?php
 
-    <?php include 'partials/footer.php'; ?>
-  </body>
-</html>
-
-<?php
-
-if($_POST['submit']){ 
+if(isset($_POST['submit'])){ 
 
   $id = $_POST['id']; 
   $full_name = $_POST['full_name']; 
@@ -128,7 +122,12 @@ if($_POST['submit']){
     header('location:'.HOMEURL.'admin/manage-admin.php'); 
 
   }
-
 }
 
 ?> 
+
+    <!-- Footer Section -->
+
+    <?php include 'partials/footer.php'; ?>
+  </body>
+</html>
