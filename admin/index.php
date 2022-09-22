@@ -24,6 +24,19 @@
             
             <h2 style="text-align: center">Main Dashboard</h2>
 
+            <!-- Login Message -->
+
+            <?php
+
+              if(isset($_SESSION['login'])){ 
+
+                echo $_SESSION['login']; 
+                unset($_SESSION['login']); 
+
+              } 
+
+            ?>
+
             <div class="col-4">
                 <h1>5</h1>
                 <br />
