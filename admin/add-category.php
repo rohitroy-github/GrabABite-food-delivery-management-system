@@ -163,9 +163,18 @@ if(isset($_POST['submit'])){
   if(isset($_FILES['image']['name'])){ 
 
     //Upload Image
-    $image_name  = $_FILES['image']['name']; 
+
+        // Auto-Rename our images
+        $image_name = $_FILES['image']['name']; 
+
+        $ext = end(explode('.', $image_name));
+
+        echo $ext;
+        
+        $image_name_renamed  = "food_category_".$title.".".$ext; 
+
     $source_path = $_FILES['image']['tmp_name']; 
-    $destination_path = "../images/category/".$image_name; 
+    $destination_path = "../images/category/".$image_name_renamed; 
 
     $upload = move_uploaded_file($source_path, $destination_path); 
 
@@ -180,8 +189,8 @@ if(isset($_POST['submit'])){
       die();
 
     }
-
   }
+
   else{ 
 
     // Upload Rejected ! 
@@ -193,7 +202,7 @@ if(isset($_POST['submit'])){
 
   $sql = "INSERT INTO tbl_category SET
   title = '$title', 
-  image_name = '$image_name',
+  image_name = '$image_name_renamed',
   featured = '$featured', 
   active = '$active'
   "; 
