@@ -27,18 +27,29 @@
         <!-- Printing success message -->
 
         <?php
-        if(isset($_SESSION['add']))
+
+        if(isset($_SESSION['add-category']))
         { 
-          echo $_SESSION['add'];
+          echo $_SESSION['add-category'];
           // Ending session 
-          unset($_SESSION['add']); 
+          unset($_SESSION['add-category']); 
         }
+
+        if(isset($_SESSION['upload']))
+        { 
+          echo $_SESSION['upload'];
+          // Ending session 
+          unset($_SESSION['upload']); 
+        }
+
         ?>
 
         <!-- Form -->
 
-        <form action="" method="POST">
-          <table class="tbl-30">
+        <form action="" method="POST" enctype="multipart/form-data">
+          <!-- enctype="multipart/form-data" >>> To Add Image File In Form -->
+
+          <table class="add-category-tbl-30">
             <tr>
               <td>Title :</td>
               <td>
@@ -51,44 +62,35 @@
             </tr>
 
             <tr>
+              <td>Select Image :</td>
+              <td>
+                <input
+                  type="file"
+                  name="image"
+                  placeholder="Category Image ?"
+                />
+              </td>
+            </tr>
+
+            <tr>
               <td>Featured :</td>
               <td>
+                <input type="radio" name="featured" value="Yes" />
+                Yes
 
-                <input
-                  type="radio"
-                  name="featured"
-                  value="Yes"
-                />
-                Yes 
-
-                <input
-                  type="radio"
-                  name="featured"
-                  value="No"
-                />
+                <input type="radio" name="featured" value="No" />
                 No
-
               </td>
             </tr>
 
             <tr>
               <td>Active :</td>
               <td>
+                <input type="radio" name="active" value="Yes" />
+                Yes
 
-                <input
-                  type="radio"
-                  name="active"
-                  value="Yes"
-                />
-                Yes 
-
-                <input
-                  type="radio"
-                  name="active"
-                  value="No"
-                />
+                <input type="radio" name="active" value="No" />
                 No
-
               </td>
             </tr>
 
@@ -153,10 +155,45 @@ if(isset($_POST['submit'])){
 
   }
 
+  //Checking for image file availibility 
+
+  //Display all data of Files/ Image 
+  // print_r($_FILES['image']); 
+
+  if(isset($_FILES['image']['name'])){ 
+
+    //Upload Image
+    $image_name  = $_FILES['image']['name']; 
+    $source_path = $_FILES['image']['tmp_name']; 
+    $destination_path = "../images/category/".$image_name; 
+
+    $upload = move_uploaded_file($source_path, $destination_path); 
+
+    // Check Uploaded/ Not ? 
+
+    if($upload == FALSE){ 
+
+      $_SESSION['upload'] = "Failed To Upload Image !"; 
+      header("location:".HOMEURL.'admin/add-category.php');
+
+      // Stop Processing
+      die();
+
+    }
+
+  }
+  else{ 
+
+    // Upload Rejected ! 
+    $image_name = ""; 
+  
+  }
+
   // Set SQL query
 
   $sql = "INSERT INTO tbl_category SET
   title = '$title', 
+  image_name = '$image_name',
   featured = '$featured', 
   active = '$active'
   "; 
@@ -168,28 +205,23 @@ if(isset($_POST['submit'])){
   // Check whether data is inserted ? 
 
   if($res == TRUE){ 
-    
     // Data inserted
 
-    $_SESSION['add'] = "Category Added Successfully !"; 
+    $_SESSION['add-category'] = "Category Added Successfully !"; 
 
     // Redirect to ManageAdmin Page
     header("location:".HOMEURL.'admin/manage-category.php');
 
   }
   else{ 
-
     // Failed
 
-    $_SESSION['add'] = "Failed To Add New Category !";
+    $_SESSION['add-category'] = "Failed To Add New Category !";
 
     // Redirect to addAdmin Page again
     header("location:".HOMEURL.'admin/add-category.php'); 
 
   }
-
-  // echo $sql;
-
 }
 
 ?>

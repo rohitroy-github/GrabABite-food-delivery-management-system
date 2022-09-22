@@ -35,14 +35,14 @@
         <!-- Printing success message -->
         <?php
 
-      if(isset($_SESSION['add']))
-      { 
-      echo $_SESSION['add'];
-      // Ending session 
-      unset($_SESSION['add']); 
-      }
+          if(isset($_SESSION['add-category']))
+          { 
+          echo $_SESSION['add-category'];
+          // Ending session 
+          unset($_SESSION['add-category']); 
+          }
 
-      ?>
+        ?>
 
         <br />
 
