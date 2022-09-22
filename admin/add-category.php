@@ -35,11 +35,11 @@
           unset($_SESSION['add-category']); 
         }
 
-        if(isset($_SESSION['upload']))
+        if(isset($_SESSION['upload-image-failed']))
         { 
-          echo $_SESSION['upload'];
+          echo $_SESSION['upload-image-failed'];
           // Ending session 
-          unset($_SESSION['upload']); 
+          unset($_SESSION['upload-image-failed']); 
         }
 
         ?>
@@ -118,7 +118,6 @@
 
 <?php 
 
-// Process value from from the save in database
 // Check if the button is clicked ? 
 
 if(isset($_POST['submit'])){ 
@@ -127,7 +126,7 @@ if(isset($_POST['submit'])){
 
   $title = $_POST['title'];
 
-  // Redio input type 
+  // Radio input type 
 
   // Featured Option 
 
@@ -168,8 +167,6 @@ if(isset($_POST['submit'])){
         $image_name = $_FILES['image']['name']; 
 
         $ext = end(explode('.', $image_name));
-
-        echo $ext;
         
         $image_name_renamed  = "food_category_".$title.".".$ext; 
 
@@ -182,7 +179,7 @@ if(isset($_POST['submit'])){
 
     if($upload == FALSE){ 
 
-      $_SESSION['upload'] = "Failed To Upload Image !"; 
+      $_SESSION['upload-image-failed'] = "Failed To Upload Image !"; 
       header("location:".HOMEURL.'admin/add-category.php');
 
       // Stop Processing
@@ -209,12 +206,13 @@ if(isset($_POST['submit'])){
 
   // Execute query into database
 
-  $res = mysqli_query($conn, $sql) or die(mysqli_error()); 
+  // $res = mysqli_query($conn, $sql) or die(mysqli_error()); 
+  $res = mysqli_query($conn, $sql);
 
   // Check whether data is inserted ? 
 
   if($res == TRUE){ 
-    // Data inserted
+    // Data Insertion Successfull !
 
     $_SESSION['add-category'] = "Category Added Successfully !"; 
 
@@ -223,7 +221,7 @@ if(isset($_POST['submit'])){
 
   }
   else{ 
-    // Failed
+    // Data Insertion Failed !
 
     $_SESSION['add-category'] = "Failed To Add New Category !";
 
