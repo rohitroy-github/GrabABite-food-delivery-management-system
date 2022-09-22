@@ -1,3 +1,14 @@
+<?php
+
+  // Initial login check !
+  
+  // Adding DB connection code in menu to get applied in all the pages simultaneously
+  include('../config/constants.php');
+
+  include('login-check.php'); 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,9 +24,6 @@
   </head>
   <body>
 
-  <!-- Adding DB connection code in menu to get applied in all the pages simultaneously -->
-  <?php include('../config/constants.php'); ?>
-
     <!-- Menu Section -->
     <div class="menu">
       <div class="wrapper">
@@ -25,6 +33,7 @@
           <li><a href="manage-category.php">Categories</a></li>
           <li><a href="manage-food.php">Food</a></li>
           <li><a href="manage-orders.php">Orders</a></li>
+          <li><a href="logout.php">Log Out</a></li>
         </ul>
       </div>
     </div>

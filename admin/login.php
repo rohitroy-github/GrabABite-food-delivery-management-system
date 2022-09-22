@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="../css/admin.css" />
   </head>
   <body>
+
     <?php 
-  include('../config/constants.php'); 
-  ?>
+      include('../config/constants.php'); 
+    ?>
 
     <div class="login">
       <h2>Login</h2>
@@ -24,14 +25,30 @@
 
       <?php
 
+        if(isset($_SESSION['logout'])){ 
+
+        echo $_SESSION['logout']; 
+        unset($_SESSION['logout']); 
+
+        }
+
         if(isset($_SESSION['login'])){ 
   
           echo $_SESSION['login']; 
           unset($_SESSION['login']); 
   
         } 
+
+        if(isset($_SESSION['no-login-message'])){ 
+
+          echo $_SESSION['no-login-message']; 
+          unset($_SESSION['no-login-message']); 
+
+        }
   
         ?>
+
+        <br />
 
       <!-- Login Form -->
 
@@ -59,6 +76,8 @@
             </td>
           </tr>
         </table>
+
+        <br />
 
         <input
           type="submit"
@@ -88,6 +107,10 @@ if(isset($_POST['submit'])){
     if($count == 1){ 
 
         $_SESSION['login'] = "Login Success !"; 
+
+        // Login session check
+        $_SESSION['user'] = $username; 
+
         header("location:".HOMEURL.'admin/');
 
     }
