@@ -159,6 +159,7 @@ if (isset($_POST['submit'])) {
         $image_name_renamed = "food_category_" . $title . "." . $extension;
 
         $source_path = $_FILES['image']['tmp_name'];
+
         $destination_path = "../images/category/" . $image_name_renamed;
 
         $upload = move_uploaded_file($source_path, $destination_path);
@@ -166,6 +167,7 @@ if (isset($_POST['submit'])) {
         // Check Uploaded/ Not ?
 
         if ($upload == false) {
+            // If upload failed ?
 
             $_SESSION['upload-image-failed'] = "Failed To Upload Image !";
             header("location:" . HOMEURL . 'admin/add-category.php');
