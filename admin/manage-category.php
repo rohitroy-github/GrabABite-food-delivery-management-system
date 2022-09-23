@@ -53,6 +53,24 @@ if (isset($_SESSION['delete'])) {
     unset($_SESSION['delete']);
 }
 
+if (isset($_SESSION['update'])) {
+    echo $_SESSION['update'];
+    // Ending session
+    unset($_SESSION['update']);
+}
+
+if (isset($_SESSION['upload-image-failed'])) {
+    echo $_SESSION['upload-image-failed'];
+    // Ending session
+    unset($_SESSION['upload-image-failed']);
+}
+
+if (isset($_SESSION['no-category-found'])) {
+    echo $_SESSION['no-category-found'];
+    // Ending session
+    unset($_SESSION['no-category-found']);
+}
+
 ?>
 
         <br />
@@ -102,15 +120,15 @@ if ($res == true) {
                   <img src="<?php echo HOMEURL; ?>images/category/<?php echo $image_name; ?>" width="100px">
                   <?php
 } else {
-                echo "<div class='message'>No Categories Found !</div>";
+                echo "<div class='message'>Image Not Uploaded !</div>";
             }
             ?>
               </td>
               <td><?php echo $featured; ?></td>
               <td><?php echo $active; ?></td>
               <td>
-                <a
-                  href="<?php echo HOMEURL; ?>admin/update-category.php?id=<?php echo $id; ?>"
+              <a
+                  href="<?php echo HOMEURL; ?>admin/update-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>"
                   class="btn-table"
                   >Update Category</a
                 >

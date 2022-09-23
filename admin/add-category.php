@@ -152,30 +152,34 @@ if (isset($_POST['submit'])) {
         // Auto-Rename our images
         $image_name = $_FILES['image']['name'];
 
-        $ext = explode(".", $image_name);
+        if ($image_name != "") {
 
-        $extension = end($ext);
+            $ext = explode(".", $image_name);
 
-        $image_name_renamed = "food_category_" . $title . "." . $extension;
+            $extension = end($ext);
 
-        $source_path = $_FILES['image']['tmp_name'];
+            $image_name_renamed = "food_category_" . $title . "." . $extension;
 
-        $destination_path = "../images/category/" . $image_name_renamed;
+            $source_path = $_FILES['image']['tmp_name'];
 
-        $upload = move_uploaded_file($source_path, $destination_path);
+            $destination_path = "../images/category/" . $image_name_renamed;
 
-        // Check Uploaded/ Not ?
+            $upload = move_uploaded_file($source_path, $destination_path);
 
-        if ($upload == false) {
-            // If upload failed ?
+            // Check Uploaded/ Not ?
 
-            $_SESSION['upload-image-failed'] = "Failed To Upload Image !";
-            header("location:" . HOMEURL . 'admin/add-category.php');
+            if ($upload == false) {
+                // If upload failed ?
 
-            // Stop Processing
-            die();
+                $_SESSION['upload-image-failed'] = "Failed To Upload Image !";
+                header("location:" . HOMEURL . 'admin/add-category.php');
 
+                // Stop Processing
+                die();
+
+            }
         }
+
     } else {
 
         // Upload Rejected !
