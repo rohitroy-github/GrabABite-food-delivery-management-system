@@ -41,6 +41,18 @@ if (isset($_SESSION['add-category'])) {
     unset($_SESSION['add-category']);
 }
 
+if (isset($_SESSION['remove-image-file'])) {
+    echo $_SESSION['remove-image-file'];
+    // Ending session
+    unset($_SESSION['remove-image-file']);
+}
+
+if (isset($_SESSION['delete'])) {
+    echo $_SESSION['delete'];
+    // Ending session
+    unset($_SESSION['delete']);
+}
+
 ?>
 
         <br />
@@ -76,43 +88,44 @@ if ($res == true) {
             $image_name = $rows['image_name'];
             $featured = $rows['featured'];
             $active = $rows['active'];
-        }
-        ?>
+            ?>
 
-          <tr>
-            <td><?php echo $sn++; ?></td>
-            <td><?php echo $title; ?></td>
-            <td>
-              <?php
+            <tr>
+              <td><?php echo $sn++; ?></td>
+              <td><?php echo $title; ?></td>
+              <td>
+                <?php
 // Check if image name is available ?
 
-        if ($image_name != "") {
-            ?>
-                <img src="<?php echo HOMEURL; ?>images/category/<?php echo $image_name; ?>" width="100px">
-                <?php
+            if ($image_name != "") {
+                ?>
+                  <img src="<?php echo HOMEURL; ?>images/category/<?php echo $image_name; ?>" width="100px">
+                  <?php
 } else {
-            echo "<div class='message'>No Categories Found !</div>";
+                echo "<div class='message'>No Categories Found !</div>";
+            }
+            ?>
+              </td>
+              <td><?php echo $featured; ?></td>
+              <td><?php echo $active; ?></td>
+              <td>
+                <a
+                  href="<?php echo HOMEURL; ?>admin/update-category.php?id=<?php echo $id; ?>"
+                  class="btn-table"
+                  >Update Category</a
+                >
+
+                <a
+                  href="<?php echo HOMEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>"
+                  class="btn-table"
+                  >Delete Category</a
+                >
+              </td>
+              </tr>
+
+            <?php
+
         }
-        ?>
-            </td>
-            <td><?php echo $featured; ?></td>
-            <td><?php echo $active; ?></td>
-            <td>
-              <a
-                href="<?php echo HOMEURL; ?>admin/update-category.php?id=<?php echo $id; ?>"
-                class="btn-table"
-                >Update Category</a
-              >
-
-              <a
-                href="<?php echo HOMEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>"
-                class="btn-table"
-                >Delete Category</a
-              >
-            </td>
-            </tr>
-
-          <?php
 
     } else {
         ?>

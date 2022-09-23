@@ -2,26 +2,25 @@
 
 <?php
 
-    include('../config/constants.php');
-    
-    $id = $_GET['id'];
+include '../config/constants.php';
 
-    $sql = "DELETE FROM tbl_admin WHERE id=$id"; 
- 
-    $res = mysqli_query($conn, $sql);
+$id = $_GET['id'];
 
-    if($res == TRUE){ 
-        
-        $_SESSION['delete'] = "Admin Deleted Successfully !"; 
+$sql = "DELETE FROM tbl_admin WHERE id=$id";
 
-        //Redirect 
-        header('location:'.HOMEURL.'admin/manage-admin.php'); 
-    }
-    else{ 
+$res = mysqli_query($conn, $sql);
 
-        $_SESSION['delete'] = "Failed To Delete Admin !"; 
-        header('location:'.HOMEURL.'admin/manage-admin.php'); 
-    }
+if ($res == true) {
 
-    echo $id;
-?> 
+    $_SESSION['delete'] = "Admin Deleted Successfully !";
+
+    //Redirect
+    header('location:' . HOMEURL . 'admin/manage-admin.php');
+} else {
+
+    $_SESSION['delete'] = "Failed To Delete Admin !";
+    header('location:' . HOMEURL . 'admin/manage-admin.php');
+}
+
+echo $id;
+?>
