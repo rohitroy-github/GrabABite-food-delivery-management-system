@@ -16,7 +16,7 @@
   <body>
     <!-- Menu Section -->
 
-    <?php include 'partials/menu.php'; ?>
+    <?php include 'partials/menu.php';?>
 
     <!-- Main Content Section-->
 
@@ -35,60 +35,103 @@
         <!-- Printing success message -->
         <?php
 
-          if(isset($_SESSION['add-category']))
-          { 
-          echo $_SESSION['add-category'];
-          // Ending session 
-          unset($_SESSION['add-category']); 
-          }
+if (isset($_SESSION['add-category'])) {
+    echo $_SESSION['add-category'];
+    // Ending session
+    unset($_SESSION['add-category']);
+}
 
-        ?>
+?>
 
         <br />
 
         <table class="tbl-full">
+
           <tr>
             <th>Serial Number</th>
-            <th>Fullname</th>
-            <th>Username</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Featured</th>
+            <th>Active</th>
             <th>Actions</th>
           </tr>
 
-          <tr>
-            <td>1.</td>
-            <td>Rohit Roy</td>
-            <td>rohitroy</td>
-            <td>
-              <a href="#" class="btn-table">Update Admin</a>
-              <a href="#" class="btn-table">Delete Admin</a>
-            </td>
-          </tr>
+          <?php
+$sql = "SELECT * FROM tbl_category";
+
+$res = mysqli_query($conn, $sql);
+
+if ($res == true) {
+
+    // Count rows for checking data availibility
+    $count = mysqli_num_rows($res);
+
+    $sn = 1;
+
+    if ($count > 0) {
+        while ($rows = mysqli_fetch_assoc($res)) {
+            //Run as long as data is available
+            $id = $rows['id'];
+            $title = $rows['title'];
+            $image_name = $rows['image_name'];
+            $featured = $rows['featured'];
+            $active = $rows['active'];
+        }
+        ?>
 
           <tr>
-            <td>1.</td>
-            <td>Rohit Roy</td>
-            <td>rohitroy</td>
+            <td><?php echo $sn++; ?></td>
+            <td><?php echo $title; ?></td>
             <td>
-              <a href="#" class="btn-table">Update Admin</a>
-              <a href="#" class="btn-table">Delete Admin</a>
-            </td>
-          </tr>
+              <?php
+// Check if image name is available ?
 
-          <tr>
-            <td>1.</td>
-            <td>Rohit Roy</td>
-            <td>rohitroy</td>
-            <td>
-              <a href="#" class="btn-table">Update Admin</a>
-              <a href="#" class="btn-table">Delete Admin</a>
+        if ($image_name != "") {
+            ?>
+                <img src="<?php echo HOMEURL; ?>images/category/<?php echo $image_name; ?>" width="100px">
+                <?php
+} else {
+            echo "<div class='message'>No Categories Found !</div>";
+        }
+        ?>
             </td>
-          </tr>
+            <td><?php echo $featured; ?></td>
+            <td><?php echo $active; ?></td>
+            <td>
+              <a
+                href="<?php echo HOMEURL; ?>admin/update-category.php?id=<?php echo $id; ?>"
+                class="btn-table"
+                >Update Category</a
+              >
+
+              <a
+                href="<?php echo HOMEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>"
+                class="btn-table"
+                >Delete Category</a
+              >
+            </td>
+            </tr>
+
+          <?php
+
+    } else {
+        ?>
+            <tr>
+              <td colspan="6">
+                <div class="message">No Categories Found !</div>
+              </td>
+            </tr>
+            <?php
+}
+}
+?>
+
         </table>
       </div>
     </div>
 
     <!-- Footer Section -->
 
-    <?php include 'partials/footer.php'; ?>
+    <?php include 'partials/footer.php';?>
   </body>
 </html>
