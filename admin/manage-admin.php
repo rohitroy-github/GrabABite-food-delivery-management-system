@@ -16,7 +16,7 @@
   <body>
     <!-- Menu Section -->
 
-    <?php include 'partials/menu.php'; ?>
+    <?php include 'partials/menu.php';?>
 
     <!-- Main Content Section-->
 
@@ -35,49 +35,43 @@
         <!-- Printing success message -->
         <?php
 
-          if(isset($_SESSION['add']))
-          { 
-            echo $_SESSION['add'];
-            // Ending session 
-            unset($_SESSION['add']); 
-          }
+if (isset($_SESSION['add'])) {
+    echo $_SESSION['add'];
+    // Ending session
+    unset($_SESSION['add']);
+}
 
-          if(isset($_SESSION['delete']))
-          { 
-            echo $_SESSION['delete'];
-            // Ending session 
-            unset($_SESSION['delete']); 
-          }
+if (isset($_SESSION['delete'])) {
+    echo $_SESSION['delete'];
+    // Ending session
+    unset($_SESSION['delete']);
+}
 
-          if(isset($_SESSION['update']))
-          { 
-            echo $_SESSION['update'];
-            // Ending session 
-            unset($_SESSION['update']); 
-          }
+if (isset($_SESSION['update'])) {
+    echo $_SESSION['update'];
+    // Ending session
+    unset($_SESSION['update']);
+}
 
-          if(isset($_SESSION['update-password']))
-          { 
-            echo $_SESSION['update-password'];
-            // Ending session 
-            unset($_SESSION['update-password']); 
-          }
+if (isset($_SESSION['update-password'])) {
+    echo $_SESSION['update-password'];
+    // Ending session
+    unset($_SESSION['update-password']);
+}
 
-          if(isset($_SESSION['user-not-found']))
-          { 
-            echo $_SESSION['user-not-found'];
-            // Ending session 
-            unset($_SESSION['user-not-found']); 
-          }
+if (isset($_SESSION['user-not-found'])) {
+    echo $_SESSION['user-not-found'];
+    // Ending session
+    unset($_SESSION['user-not-found']);
+}
 
-          if(isset($_SESSION['password-not-match']))
-          { 
-            echo $_SESSION['password-not-match'];
-            // Ending session 
-            unset($_SESSION['password-not-match']); 
-          }
+if (isset($_SESSION['password-not-match'])) {
+    echo $_SESSION['password-not-match'];
+    // Ending session
+    unset($_SESSION['password-not-match']);
+}
 
-        ?>
+?>
 
         <br />
 
@@ -90,22 +84,23 @@
           </tr>
 
           <?php
-          $sql = "SELECT * FROM tbl_admin"; 
+$sql = "SELECT * FROM tbl_admin";
 
-          $res = mysqli_query($conn, $sql); 
+$res = mysqli_query($conn, $sql);
 
-          if($res == TRUE){ 
-            
-            // Count rows for checking data availibility
-            $count = mysqli_num_rows($res); 
+if ($res == true) {
 
-            $sn = 1; 
+    // Count rows for checking data availibility
+    $count = mysqli_num_rows($res);
 
-            if($count > 0){
-               while($rows = mysqli_fetch_assoc($res)){ 
-                //Run as long as data is available 
-          $id = $rows['id']; $full_name = $rows['full_name'];
-          $username = $rows['username']; ?>
+    $sn = 1;
+
+    if ($count > 0) {
+        while ($rows = mysqli_fetch_assoc($res)) {
+            //Run as long as data is available
+            $id = $rows['id'];
+            $full_name = $rows['full_name'];
+            $username = $rows['username'];?>
 
           <tr>
             <td><?php echo $sn++; ?></td>
@@ -121,16 +116,16 @@
           </tr>
 
           <?php
-              }
-            }
-          }
-          ?>
+}
+    }
+}
+?>
         </table>
       </div>
     </div>
 
     <!-- Footer Section -->
 
-    <?php include 'partials/footer.php'; ?>
+    <?php include 'partials/footer.php';?>
   </body>
 </html>
