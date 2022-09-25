@@ -168,19 +168,19 @@ if (isset($_POST['submit'])) {
         //Upload Image
 
         // Auto-Rename our images
-        $image_name = $_FILES['image']['name'];
+        $new_image = $_FILES['image']['name'];
 
-        if ($image_name != "") {
+        if ($new_image != "") {
 
-            $ext = explode(".", $image_name);
+            $ext = explode(".", $new_image);
 
             $extension = end($ext);
 
-            $image_name_renamed = "food_category_" . $title . "." . $extension;
+            $new_image_renamed = "food_category_" . $title . "." . $extension;
 
             $source_path = $_FILES['image']['tmp_name'];
 
-            $destination_path = "../images/category/" . $image_name_renamed;
+            $destination_path = "../images/category/" . $new_image_renamed;
 
             $upload = move_uploaded_file($source_path, $destination_path);
 
@@ -199,7 +199,7 @@ if (isset($_POST['submit'])) {
 
             // Remove image from variable/ folder !
 
-            if ($current_image != "") {
+            if ($new_image != "") {
 
                 $remove_path = "../images/category/" . $current_image;
 
