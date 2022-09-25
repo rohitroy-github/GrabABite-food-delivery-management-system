@@ -19,35 +19,6 @@ include '../config/constants.php';
     <div class="login">
       <h2>Login</h2>
 
-      <!-- <br /> -->
-
-      <!-- Login Message -->
-
-      <?php
-
-if (isset($_SESSION['logout'])) {
-
-    echo $_SESSION['logout'];
-    unset($_SESSION['logout']);
-
-}
-
-if (isset($_SESSION['login'])) {
-
-    echo $_SESSION['login'];
-    unset($_SESSION['login']);
-
-}
-
-if (isset($_SESSION['no-login-message'])) {
-
-    echo $_SESSION['no-login-message'];
-    unset($_SESSION['no-login-message']);
-
-}
-
-?>
-
         <br />
 
       <!-- Login Form -->
@@ -87,6 +58,37 @@ if (isset($_SESSION['no-login-message'])) {
           style="text-align: center"
         />
       </form>
+
+      <br />
+
+            <!-- Login Message -->
+
+
+      <?php
+
+if (isset($_SESSION['logout'])) {
+
+    echo $_SESSION['logout'];
+    unset($_SESSION['logout']);
+
+}
+
+if (isset($_SESSION['login'])) {
+
+    echo $_SESSION['login'];
+    unset($_SESSION['login']);
+
+}
+
+if (isset($_SESSION['no-login-message'])) {
+
+    echo $_SESSION['no-login-message'];
+    unset($_SESSION['no-login-message']);
+
+}
+
+?>
+
     </div>
   </body>
 </html>
