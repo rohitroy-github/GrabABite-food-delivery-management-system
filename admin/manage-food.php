@@ -16,7 +16,7 @@
   <body>
     <!-- Menu Section -->
 
-    <?php include 'partials/menu.php'; ?>
+    <?php include 'partials/menu.php';?>
 
     <!-- Main Content Section-->
 
@@ -28,9 +28,22 @@
 
         <!-- Button to add new food -->
 
-        <a href="#" class="btn-new-admin">Add New Food Item</a>
+        <a href="add-food.php" class="btn-new-food">Add New Food Item</a>
 
-        <br /><br />
+        <br /><br /><br />
+
+        <!-- Printing success message -->
+        <?php
+
+if (isset($_SESSION['add-food'])) {
+    echo $_SESSION['add-food'];
+    // Ending session
+    unset($_SESSION['add-food']);
+}
+
+?>
+
+        <br />
 
         <table class="tbl-full">
 
@@ -77,6 +90,6 @@
 
     <!-- Footer Section -->
 
-    <?php include 'partials/footer.php'; ?>
+    <?php include 'partials/footer.php';?>
   </body>
 </html>
