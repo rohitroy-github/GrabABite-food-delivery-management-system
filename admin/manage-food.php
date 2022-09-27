@@ -71,6 +71,24 @@ if (isset($_SESSION['failed-to-remove-current-food-image'])) {
     unset($_SESSION['failed-to-remove-current-food-image']);
 }
 
+if (isset($_SESSION['no-food-found'])) {
+    echo $_SESSION['no-food-found'];
+    // Ending session
+    unset($_SESSION['no-food-found']);
+}
+
+if (isset($_SESSION['failed-to-upload-food-image'])) {
+    echo $_SESSION['failed-to-upload-food-image'];
+    // Ending session
+    unset($_SESSION['failed-to-upload-food-image']);
+}
+
+if (isset($_SESSION['failed-to-remove-food-image-file'])) {
+    echo $_SESSION['failed-to-remove-food-image-file'];
+    // Ending session
+    unset($_SESSION['failed-to-remove-food-image-file']);
+}
+
 ?>
 
         <br />
