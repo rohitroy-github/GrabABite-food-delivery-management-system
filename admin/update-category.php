@@ -25,7 +25,6 @@
         <h3>Update Category</h3>
 
 <?php
-
 if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
@@ -55,14 +54,7 @@ if (isset($_GET['id'])) {
     header('location:' . HOMEURL . 'admin/manage-category.php');
 
 }
-
-//Checking
-// echo $id;
-// echo $title;
-// echo $current_image;
-
 ?>
-
         <form action="" method="POST" enctype="multipart/form-data">
           <!-- enctype="multipart/form-data" >>> To Add Image File In Form -->
 
@@ -84,7 +76,6 @@ if (isset($_GET['id'])) {
               <td>
                 <!-- Old Image is displayed -->
                 <?php
-
 if ($current_image != "") {
 
     ?>
@@ -96,7 +87,6 @@ if ($current_image != "") {
     echo "<div class='left-alligned-message'>Image Not Uploaded !</div>";
 
 }
-
 ?>
               </td>
             </tr>
@@ -152,9 +142,7 @@ if ($current_image != "") {
         </form>
       </div>
     </div>
-
     <?php
-
 if (isset($_POST['submit'])) {
 
     $id = $_POST['id'];
@@ -176,7 +164,7 @@ if (isset($_POST['submit'])) {
 
             $extension = end($ext);
 
-            $new_image_renamed = "food_category_" . $title . "." . $extension;
+            $new_image_renamed = "food-name-" . $title . "-" . rand(0000, 9999) . "." . $extension;
 
             $source_path = $_FILES['image']['tmp_name'];
 
@@ -189,8 +177,8 @@ if (isset($_POST['submit'])) {
             if ($upload == false) {
                 // If upload failed ?
 
-                $_SESSION['upload-image-failed'] = "Failed To Upload Image !";
-                header("location:" . HOMEURL . 'admin/manage-category.php');
+                $_SESSION['failed-to-update-upload-image'] = "Failed To Upload Image !";
+                header("location:" . HOMEURL . 'admin/manage-food.php');
 
                 // Stop Processing
                 die();
@@ -201,14 +189,14 @@ if (isset($_POST['submit'])) {
 
             if ($new_image != "") {
 
-                $remove_path = "../images/category/" . $current_image;
+                $remove_path = "../images/food/" . $current_image;
 
                 $remove_image = unlink($remove_path);
 
                 if ($remove_image == false) {
 
-                    $_SESSION['remove-image-file'] = "Failed To Remove Current Image";
-                    header('location:' . HOMEURL . 'admin/manage-category.php');
+                    $_SESSION['failed-to-remove-current-food-image'] = "Failed To Remove Current Image !";
+                    header('location:' . HOMEURL . 'admin/manage-food.php');
 
                     // Stop all further procedure !
                     die();
@@ -225,8 +213,9 @@ if (isset($_POST['submit'])) {
 
     }
 
-    $sql2 = "UPDATE tbl_category SET
+    $sql2 = "UPDATE tbl_food SET
         title='$title',
+        price='$price',
         image_name='$image_name',
         featured='$featured',
         active='$active'
@@ -237,18 +226,17 @@ if (isset($_POST['submit'])) {
 
     if ($res2 == true) {
 
-        $_SESSION['update'] = "Category Updated Successfully !";
-        header('location:' . HOMEURL . 'admin/manage-category.php');
+        $_SESSION['update-food'] = "Food Item Updated Successfully !";
+        header('location:' . HOMEURL . 'admin/manage-food.php');
 
     } else {
 
-        $_SESSION['update'] = "Category Updation Failed !";
-        header('location:' . HOMEURL . 'admin/manage-category.php');
+        $_SESSION['update-food'] = "Food Item Updation Failed !";
+        header('location:' . HOMEURL . 'admin/manage-food.php');
 
     }
 }
 ?>
-
     <!-- Footer Section -->
 
     <?php include 'partials/footer.php';?>
