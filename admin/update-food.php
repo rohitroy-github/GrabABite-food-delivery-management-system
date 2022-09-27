@@ -1,4 +1,4 @@
-<!-- Updating Food Item From DB -->
+<!-- Updating Food @DB -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
 
     <!-- Add Bootstrap Code -->
 
-    <title>Food Ordering App - Update Food Item</title>
+    <title>Update Food Item</title>
   </head>
   <body>
     <!-- Menu Section -->
@@ -52,18 +52,11 @@ if (isset($_GET['id'])) {
 
     // If no data is found redirect to manage-admin page with session message
 
-    $_SESSION['no-category-found'] = "Food Item Not Found !";
+    $_SESSION['no-food-found'] = "Selected Food Item Not Found !";
     header('location:' . HOMEURL . 'admin/manage-food.php');
 
 }
-
-//Checking
-// echo $id;
-// echo $title;
-// echo $current_image;
-
 ?>
-
         <form action="" method="POST" enctype="multipart/form-data">
           <!-- enctype="multipart/form-data" >>> To Add Image File In Form -->
 
@@ -190,7 +183,7 @@ if (isset($_POST['submit'])) {
 
             $extension = end($ext);
 
-            $new_image_renamed = "food_category_" . $title . "." . $extension;
+            $new_image_renamed = "food-item-" . $title . "." . $extension;
 
             $source_path = $_FILES['image']['tmp_name'];
 
@@ -203,8 +196,8 @@ if (isset($_POST['submit'])) {
             if ($upload == false) {
                 // If upload failed ?
 
-                $_SESSION['upload-image-failed'] = "Failed To Upload Image !";
-                header("location:" . HOMEURL . 'admin/manage-category.php');
+                $_SESSION['failed-to-upload-food-image'] = "Failed To Upload Image !";
+                header("location:" . HOMEURL . 'admin/manage-food.php');
 
                 // Stop Processing
                 die();
@@ -215,14 +208,14 @@ if (isset($_POST['submit'])) {
 
             if ($new_image != "") {
 
-                $remove_path = "../images/category/" . $current_image;
+                $remove_path = "../images/food/" . $current_image;
 
                 $remove_image = unlink($remove_path);
 
                 if ($remove_image == false) {
 
-                    $_SESSION['remove-image-file'] = "Failed To Remove Current Image";
-                    header('location:' . HOMEURL . 'admin/manage-category.php');
+                    $_SESSION['failed-to-remove-food-image-file'] = "Failed To Remove Current Image";
+                    header('location:' . HOMEURL . 'admin/manage-food.php');
 
                     // Stop all further procedure !
                     die();
@@ -239,25 +232,26 @@ if (isset($_POST['submit'])) {
 
     }
 
-    $sql2 = "UPDATE tbl_category SET
-        title='$title',
-        image_name='$image_name',
-        featured='$featured',
-        active='$active'
-        WHERE id=$id
-        ";
+    $sql2 = "UPDATE tbl_food SET
+    title='$title',
+    price='$price',
+    image_name='$image_name',
+    featured='$featured',
+    active='$active'
+    WHERE id=$id
+    ";
 
     $res2 = mysqli_query($conn, $sql2);
 
     if ($res2 == true) {
 
-        $_SESSION['update'] = "Category Updated Successfully !";
-        header('location:' . HOMEURL . 'admin/manage-category.php');
+        $_SESSION['update-food'] = "Food Item Updated Successfully !";
+        header('location:' . HOMEURL . 'admin/manage-food.php');
 
     } else {
 
-        $_SESSION['update'] = "Category Updation Failed !";
-        header('location:' . HOMEURL . 'admin/manage-category.php');
+        $_SESSION['update-food'] = "Food Item Updation Failed !";
+        header('location:' . HOMEURL . 'admin/manage-food.php');
 
     }
 }

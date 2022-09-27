@@ -53,22 +53,31 @@ if (isset($_SESSION['delete'])) {
     unset($_SESSION['delete']);
 }
 
-if (isset($_SESSION['update'])) {
-    echo $_SESSION['update'];
+if (isset($_SESSION['update-category'])) {
+    echo $_SESSION['update-category'];
     // Ending session
-    unset($_SESSION['update']);
-}
-
-if (isset($_SESSION['upload-image-failed'])) {
-    echo $_SESSION['upload-image-failed'];
-    // Ending session
-    unset($_SESSION['upload-image-failed']);
+    unset($_SESSION['update-category']);
 }
 
 if (isset($_SESSION['no-category-found'])) {
     echo $_SESSION['no-category-found'];
     // Ending session
     unset($_SESSION['no-category-found']);
+}
+
+if (isset($_SESSION['failed-to-update-upload-category-image'])) {
+    echo $_SESSION['failed-to-update-upload-category-image'];
+    // Ending session
+    unset($_SESSION['failed-to-update-upload-category-image']);
+}
+
+if (isset($_SESSION['failed-to-remove-current-category-image-file
+'])) {
+    echo $_SESSION['failed-to-remove-current-category-image-file
+  '];
+    // Ending session
+    unset($_SESSION['failed-to-remove-current-category-image-file
+  ']);
 }
 
 ?>
