@@ -153,3 +153,14 @@
 .update-category-tbl-30 {
   width: 40%;
 }
+
+/* Food pages */
+
+.btn-new-food {
+  background-color: gray;
+  padding: 1%;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
