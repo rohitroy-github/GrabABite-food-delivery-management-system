@@ -16,7 +16,7 @@
   <body>
     <!-- Menu Section -->
 
-    <?php include 'partials/menu.php'; ?>
+    <?php include 'partials/menu.php';?>
 
     <!-- Main Content Section-->
 
@@ -24,15 +24,14 @@
       <div class="wrapper">
         <h2 style="text-align: center">Add New Admin</h2>
 
-        <!-- Printing success message -->
+        <!-- Printing SUCCESSS message -->
         <?php
-        if(isset($_SESSION['add']))
-        { 
-          echo $_SESSION['add'];
-          // Ending session 
-          unset($_SESSION['add']); 
-        }
-        ?>
+if (isset($_SESSION['add'])) {
+    echo $_SESSION['add'];
+    // Ending session
+    unset($_SESSION['add']);
+}
+?>
 
         <form action="" method="POST">
           <table class="tbl-30">
@@ -87,60 +86,59 @@
 
     <!-- Footer Section -->
 
-    <?php include 'partials/footer.php'; ?>
+    <?php include 'partials/footer.php';?>
   </body>
 </html>
 
-<?php 
+<?php
 
 // Process value from from the save in database
-// Check if the button is clicked ? 
+// Check if the button is clicked ?
 
-if(isset($_POST['submit'])){ 
+if (isset($_POST['submit'])) {
 
-  // Store in variables
+    // Store in variables
 
-  $full_name = $_POST['full_name'];
-  $username = $_POST['username'];
-  // Password encryption using md5
-  $password = md5($_POST['password']);
+    $full_name = $_POST['full_name'];
+    $username = $_POST['username'];
+    // Password encryption using md5
+    $password = md5($_POST['password']);
 
-  // Set SQL query
+    // Set SQL query
 
-  $sql = "INSERT INTO tbl_admin SET
-  full_name = '$full_name', 
-  username = '$username', 
+    $sql = "INSERT INTO tbl_admin SET
+  full_name = '$full_name',
+  username = '$username',
   password = '$password'
-  "; 
+  ";
 
-  // Execute query into database
+    // Execute query into database
 
-  $res = mysqli_query($conn, $sql) or die(mysqli_error()); 
+    $res = mysqli_query($conn, $sql) or die(mysqli_error());
 
-  // Check whether data is inserted ? 
+    // Check whether data is inserted ?
 
-  if($res == TRUE){ 
-    
-    // Data inserted
+    if ($res == true) {
 
-    $_SESSION['add'] = "Admin added successfully !"; 
+        // Data inserted
 
-    // Redirect to ManageAdmin Page
-    header("location:".HOMEURL.'admin/manage-admin.php');
+        $_SESSION['add'] = "Admin added successfully !";
 
-  }
-  else{ 
+        // Redirect to ManageAdmin Page
+        header("location:" . HOMEURL . 'admin/manage-admin.php');
 
-    // Failed
+    } else {
 
-    $_SESSION['add'] = "Failed to add admin !";
+        // Failed
 
-    // Redirect to addAdmin Page again
-    header("location:".HOMEURL.'admin/add-admin.php'); 
+        $_SESSION['add'] = "Failed to add admin !";
 
-  }
+        // Redirect to addAdmin Page again
+        header("location:" . HOMEURL . 'admin/add-admin.php');
 
-  // echo $sql;
+    }
+
+    // echo $sql;
 
 }
 

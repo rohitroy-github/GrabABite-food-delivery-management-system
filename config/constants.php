@@ -1,10 +1,9 @@
 <!-- Main SQL Database connection file -->
-
 <?php
 
 // Starting session
 
-session_start(); 
+session_start();
 
 // Defining constant values using define()
 
