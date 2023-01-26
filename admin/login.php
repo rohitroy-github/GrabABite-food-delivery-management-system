@@ -12,9 +12,7 @@
   </head>
   <body>
 
-    <?php
-include '../config/constants.php';
-?>
+    <?php include '../config/constants.php'; ?>
 
     <div class="login">
       <h2>Login</h2>
@@ -65,38 +63,27 @@ include '../config/constants.php';
 
 
       <?php
+      if (isset($_SESSION['logout'])) {
+          echo $_SESSION['logout'];
+          unset($_SESSION['logout']);
+      }
 
-if (isset($_SESSION['logout'])) {
+      if (isset($_SESSION['login'])) {
+          echo $_SESSION['login'];
+          unset($_SESSION['login']);
+      }
 
-    echo $_SESSION['logout'];
-    unset($_SESSION['logout']);
-
-}
-
-if (isset($_SESSION['login'])) {
-
-    echo $_SESSION['login'];
-    unset($_SESSION['login']);
-
-}
-
-if (isset($_SESSION['no-login-message'])) {
-
-    echo $_SESSION['no-login-message'];
-    unset($_SESSION['no-login-message']);
-
-}
-
-?>
+      if (isset($_SESSION['no-login-message'])) {
+          echo $_SESSION['no-login-message'];
+          unset($_SESSION['no-login-message']);
+      }
+      ?>
 
     </div>
   </body>
 </html>
 
-<?php
-
-if (isset($_POST['submit'])) {
-
+<?php if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = md5($_POST['password']);
 
@@ -107,20 +94,15 @@ if (isset($_POST['submit'])) {
     $count = mysqli_num_rows($res);
 
     if ($count == 1) {
-
-        $_SESSION['login'] = "Login Success !";
+        $_SESSION['login'] = 'Login Success !';
 
         // Login session check
         $_SESSION['user'] = $username;
 
-        header("location:" . HOMEURL . 'admin/');
-
+        header('location:' . HOMEURL . 'admin/');
     } else {
-
-        $_SESSION['login'] = "Login Failed !";
-        header("location:" . HOMEURL . 'admin/login.php');
-
+        $_SESSION['login'] = 'Login Failed !';
+        header('location:' . HOMEURL . 'admin/login.php');
     }
-
 }
 ?>

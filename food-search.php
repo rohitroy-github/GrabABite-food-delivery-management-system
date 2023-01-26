@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <!-- Important to make website responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Website</title>
-
     <!-- Link our CSS file -->
     <link rel="stylesheet" href="./css/style.css">
+
 </head>
 
 <body>
 
-<?php include './partials/menu.php'; ?>
+    <!-- navbarPortion -->
+<?php include './front-end-partials/menu.php'; ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
     <section class="food-search text-center">
@@ -23,8 +25,6 @@
         </div>
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
-
-
 
     <!-- fOOD MEnu Section Starts Here -->
     <section class="food-menu">
