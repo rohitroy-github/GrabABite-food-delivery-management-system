@@ -16,7 +16,7 @@
     <!-- navbarPortion -->
 <?php include './front-end-partials/menu.php'; ?>
 
-    <!-- searchBarSection -->
+    <!-- FoodSearchBarSection -->
     <section class="food-search text-center">
         <div class="container">
 

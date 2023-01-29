@@ -31,6 +31,41 @@
         <div class="container">
             <h2 class="text-center">Food Menu</h2>
 
+            <?php
+            // getTheSearchedKeyword
+            $search = $_POST['search'];
+
+            // queryToGetFoodBasedOnSearch
+            // searchingFromTitleOrDescription
+            $sql = "SELECT * FROM tbl_food WHERE title LIKE '%$search%' OR description LIKE '%$search%'";
+
+            // executeTheQuery
+            $res = mysqli_query($conn, $sql); 
+
+            $count = mysqli_num_rows($res); 
+
+            // checkIfFoodAvailable
+            if($count > 0)
+            {
+                // foodAvailable
+                while($row=mysqli_fetch_assoc($res))
+                {
+                    $id = $row['id']; 
+                    $title = $row['title']; 
+                    $price = $row['price']; 
+                    $description = $row['$description']
+                }
+            }
+            else
+            {
+                // foodUnavailable
+                echo "
+                <div class = 'error'>
+                Searched food isn't available at the moment !
+                </div>"
+            }
+            ?>
+
             <div class="food-menu-box">
                 <div class="food-menu-img">
                     <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
