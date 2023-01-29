@@ -54,6 +54,36 @@
                     $title = $row['title']; 
                     $price = $row['price']; 
                     $description = $row['$description']
+                    $image_name = $row['image_name']; 
+                    ?>
+                        <div class="food-menu-box">
+                            <div class="food-menu-img">
+                                <!-- checkWhetherImageAvailableOrNot? -->
+                                <?php if ($image_name == '') {
+                                    // imageNotAvailable
+                                    $_SESSION['no-food-image-available'] =
+                                        'Image Unvailable !';
+                                    header('location:' . HOMEURL);
+                                }
+                                // imageAvailable
+                                else {
+                                    ?>
+                                    <img src="<?php echo HOMEURL; ?>images/food/<?php echo $image_name; ?>" class="img-responsive img-curve" />
+                                    <?php
+                                } ?>
+                            </div>
+
+                            <div class="food-menu-desc">
+                                <h4><?php echo $title; ?></h4>
+                                <p class="food-price"><?php echo $price; ?></p>
+                                <p class="food-detail">
+                                    <?php echo $description; ?>
+                                </p>
+                                <br>
+                                <a href="order.html" class="btn btn-primary">Order Now</a>
+                            </div>
+                        </div>
+                    <?php
                 }
             }
             else
