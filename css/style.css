@@ -255,3 +255,8 @@ fieldset {
     width: 100%;
   }
 }
+
+.error-message {
+  text-align: center;
+  justify-content: center;
+}

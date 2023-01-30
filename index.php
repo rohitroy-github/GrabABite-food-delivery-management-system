@@ -65,7 +65,7 @@
                     $image_name = $rows['image_name'];
                     ?>
 
-                <a href="category-foods.html">
+                <a href="<?php echo HOMEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
                     <div class="box-3 float-container">
 
                     <!-- ifImageIsAvailableThenOnlyDisplay -->
