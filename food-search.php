@@ -20,9 +20,11 @@
     <!-- fOOD sEARCH Section Starts Here -->
     <section class="food-search text-center">
         <div class="container">
-
-            <h2>Foods on Your Search <a href="#" class="text-white">"Momo"</a></h2>
-
+            <?php 
+                // getTheSearchedKeyword
+                $search = $_POST['search'];
+            ?>
+            <h2>Searched food > <a href="#" class="text-white">"<?php echo $search ?>"</a></h2>
         </div>
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
@@ -33,9 +35,6 @@
             <h2 class="text-center">Food Menu</h2>
 
             <?php
-            // getTheSearchedKeyword
-            $search = $_POST['search'];
-
             // queryToGetFoodBasedOnSearch
             // searchingFromTitleOrDescription
             $sql = "SELECT * FROM tbl_food WHERE title LIKE '%$search%' OR description LIKE '%$search%'";
@@ -54,7 +53,7 @@
                     $id = $row['id']; 
                     $title = $row['title']; 
                     $price = $row['price']; 
-                    $description = $row['$description']
+                    $description = $row['description']
                     $image_name = $row['image_name']; 
                     ?>
                         <div class="food-menu-box">
