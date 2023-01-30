@@ -16,20 +16,18 @@
     <!-- navbarPortion -->
 <?php include './front-end-partials/menu.php'; ?>
 
-    <!-- fOOD sEARCH Section Starts Here -->
+    <!-- FoodSearchBarSectionStarts -->
     <section class="food-search text-center">
         <div class="container">
 
-            <form action="food-search.html" method="POST">
+            <form action="<?php echo HOMEURL; ?>food-search.php" method="POST">
                 <input type="search" name="search" placeholder="Search for Food.." required>
                 <input type="submit" name="submit" value="Search" class="btn btn-primary">
             </form>
 
         </div>
     </section>
-    <!-- fOOD sEARCH Section Ends Here -->
-
-
+    <!-- FoodSearchBarSectionEnds -->
 
     <!-- fOOD MEnu Section Starts Here -->
     <section class="food-menu">

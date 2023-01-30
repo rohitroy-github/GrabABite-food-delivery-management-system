@@ -16,7 +16,7 @@
     <!-- navbarPortion -->
 <?php include './front-end-partials/menu.php'; ?>
 
-    <!-- FoodSearchBarSection -->
+    <!-- FoodSearchBarSectionStarts -->
     <section class="food-search text-center">
         <div class="container">
 
@@ -27,7 +27,7 @@
 
         </div>
     </section>
-    <!-- fOOD sEARCH Section Ends Here -->
+    <!-- FoodSearchBarSectionEnds -->
 
     <!-- CAtegories Section Starts Here -->
     <section class="categories">
