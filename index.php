@@ -47,6 +47,18 @@
                 // Ending session
                 unset($_SESSION['no-food-available']);
             }
+
+            if (isset($_SESSION['order-placed'])) {
+                echo $_SESSION['order-placed'];
+                // Ending session
+                unset($_SESSION['order-placed']);
+            }
+
+            if (isset($_SESSION['order-not-placed'])) {
+                echo $_SESSION['order-not-placed'];
+                // Ending session
+                unset($_SESSION['order-not-placed']);
+            }
             ?>
             
             <?php

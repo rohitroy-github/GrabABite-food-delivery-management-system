@@ -260,3 +260,8 @@ fieldset {
   text-align: center;
   justify-content: center;
 }
+
+.success-message {
+  text-align: center;
+  justify-content: center;
+}

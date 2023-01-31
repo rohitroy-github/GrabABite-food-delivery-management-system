@@ -49,7 +49,7 @@
 
             <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
 
-            <form action="#" class="order">
+            <form action="" method="POST" class="order">
                 <fieldset>
                     <legend>Selected Food</legend>
 
@@ -72,9 +72,9 @@
 
                     <div class="food-menu-desc">
                         <h3><?php echo $title; ?></h3>
-                        <input type="hidden" name="food" value="<?php echo $title ?>"  />
+                        <input type="hidden" name="food" value="<?php echo $title; ?>"/>
                         <p class="food-price"><?php echo $price; ?></p>
-                        <input type="hidden" name="price" value="<?php echo $price ?>"  />
+                        <input type="hidden" name="price" value="<?php echo $price; ?>"/>
                         <div class="order-label">Quantity</div>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
                     </div>
@@ -98,24 +98,19 @@
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
                 </fieldset>
             </form>
-
-            <!-- submission -->
-            <?php 
-            // checkWhetherSubmitButtonIsClicked?
-            if(isset($_POST['submit']))
-            {
+            <!-- checkWhetherSubmitButtonIsClicked? -->
+            <?php if (isset($_POST['submit'])) {
                 // fetchAllData
-                $food = $_POST['food']; 
-                $price = $_POST['price']; 
-                $qty = $_POST['qty']; 
-                $total = $price * $qty; 
-                $order_date = date("Y-m-d h:i:sa"); 
-                $status = "order-placed";
-                $customer_name = $_POST['full-name']; 
-                $customer_contact = $_POST['contact']; 
-                $customer_email = $_POST['email']; 
-                $customer_address = $_POST['address']; 
-
+                $food = $_POST['food'];
+                $price = $_POST['price'];
+                $qty = $_POST['qty'];
+                $total = $price * $qty;
+                $order_date = date('Y-m-d h:i:sa');
+                $status = 'order-placed';
+                $customer_name = $_POST['full-name'];
+                $customer_contact = $_POST['contact'];
+                $customer_email = $_POST['email'];
+                $customer_address = $_POST['address'];
                 // saveTheOrderInDB
                 $sql_order = "INSERT INTO tbl_order SET 
                 food = '$food', 
@@ -125,17 +120,28 @@
                 order_date = '$order_date', 
                 status = '$status',
                 customer_name = '$customer_name', 
-                customer_contact = '$customer_contact', 
+                customer_contact = '$customer_contact',  
                 customer_email = '$customer_email', 
-                customer_address = '$customer_address'"; 
-            }
-
-        </div>
+                customer_address = '$customer_address'";
+                // execute
+                $res_order = mysqli_query($conn, $sql_order);
+                // checkForQuerySuccess
+                if ($res_order == true) {
+                    $_SESSION['order-placed'] =
+                        "<div class='success-message'>Food order placed successfully !</div>";
+                    header('location:' . HOMEURL);
+                } else {
+                    // failedToSaveOrder
+                    $_SESSION['order-not-placed'] =
+                        "<div class='error-message'>Failed to place your order !</div>";
+                    header('location:' . HOMEURL);
+                }
+            } ?>
+            </div>
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
 
     <!-- footer -->
     <?php include './front-end-partials/footer.php'; ?>
-
 </body>
 </html>
