@@ -140,7 +140,6 @@
             </div>
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
-
     <!-- footer -->
     <?php include './front-end-partials/footer.php'; ?>
 </body>
