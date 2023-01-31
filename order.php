@@ -57,14 +57,15 @@
                         <!-- checkWhetherImageAvailableOrNot? -->
                         <?php if ($image_name == '') {
                             // imageNotAvailable
-                            $_SESSION['no-food-image-available'] =
-                                'Image Unvailable !';
-                            header('location:' . HOMEURL);
+                            // $_SESSION['no-food-image-available'] =
+                            //     'Image Unvailable !';
+                            // header('location:' . HOMEURL);
+                            echo "<div class='error-message'>Image not available at the moment !</div>";
                         }
                         // imageAvailable
                         else {
                              ?>
-                            <img src="<?php echo HOMEURL; ?>images/food/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                            <img src="<?php echo HOMEURL; ?>images/food/<?php echo $image_name; ?>" alt="food-image" class="img-responsive img-curve">
                             <?php
                         } ?>
                     </div>
