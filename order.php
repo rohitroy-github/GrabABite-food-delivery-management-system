@@ -72,11 +72,11 @@
 
                     <div class="food-menu-desc">
                         <h3><?php echo $title; ?></h3>
+                        <input type="hidden" name="food" value="<?php echo $title ?>"  />
                         <p class="food-price"><?php echo $price; ?></p>
-
+                        <input type="hidden" name="price" value="<?php echo $price ?>"  />
                         <div class="order-label">Quantity</div>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
-
                     </div>
 
                 </fieldset>
@@ -97,8 +97,38 @@
 
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
                 </fieldset>
-
             </form>
+
+            <!-- submission -->
+            <?php 
+            // checkWhetherSubmitButtonIsClicked?
+            if(isset($_POST['submit']))
+            {
+                // fetchAllData
+                $food = $_POST['food']; 
+                $price = $_POST['price']; 
+                $qty = $_POST['qty']; 
+                $total = $price * $qty; 
+                $order_date = date("Y-m-d h:i:sa"); 
+                $status = "order-placed";
+                $customer_name = $_POST['full-name']; 
+                $customer_contact = $_POST['contact']; 
+                $customer_email = $_POST['email']; 
+                $customer_address = $_POST['address']; 
+
+                // saveTheOrderInDB
+                $sql_order = "INSERT INTO tbl_order SET 
+                food = '$food', 
+                price = '$price', 
+                qty = '$qty', 
+                total = '$total', 
+                order_date = '$order_date', 
+                status = '$status',
+                customer_name = '$customer_name', 
+                customer_contact = '$customer_contact', 
+                customer_email = '$customer_email', 
+                customer_address = '$customer_address'"; 
+            }
 
         </div>
     </section>
