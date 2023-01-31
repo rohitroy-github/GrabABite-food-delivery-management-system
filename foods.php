@@ -78,7 +78,7 @@
                         </p>
                         <br>
                         <!-- passingFoodOrderWithSpecificFoodID -->
-                        <a href="<?php echo HOMEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>w</a>
+                        <a href="<?php echo HOMEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a></a>
                     </div>
                 </div>
                     <?php
