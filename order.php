@@ -2,20 +2,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <!-- Important to make website responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Website</title>
     <!-- Link our CSS file -->
     <link rel="stylesheet" href="./css/style.css">
-
 </head>
 
 <body>
 
     <!-- navbarPortion -->
-<?php include './front-end-partials/menu.php'; ?>
+    <?php include './front-end-partials/menu.php'; ?>
+
+    <!-- checkForFoodID -->
+    <?php if (isset($_GET['food_id'])) {
+        // getFoodID&Details
+        $food_id = $_GET['food_id'];
+        // getEverythingBasedOnID
+        $sql = "SELECT * FROM tbl_food WHERE id=$food_id";
+        // executeQuery
+        $res = mysqli_query($conn, $sql);
+        // getTheValues
+        $count = mysqli_num_rows($res);
+        // checkDataAvailability
+        if ($count == 1) {
+            $row = mysqli_fetch_assoc($res);
+            // getTheDetailsFromDatabase
+            // $id = $row['id'];
+            $title = $row['title'];
+            $price = $row['price'];
+            // $description = $row['description'];
+            $image_name = $row['image_name'];
+        } else {
+            // getBackToHomePage
+            header('location:' . HOMEURL);
+        }
+    } else {
+        // getBackToHomePage
+        header('location:' . HOMEURL);
+    } ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
     <section class="food-search">
@@ -28,12 +54,24 @@
                     <legend>Selected Food</legend>
 
                     <div class="food-menu-img">
-                        <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                        <!-- checkWhetherImageAvailableOrNot? -->
+                        <?php if ($image_name == '') {
+                            // imageNotAvailable
+                            $_SESSION['no-food-image-available'] =
+                                'Image Unvailable !';
+                            header('location:' . HOMEURL);
+                        }
+                        // imageAvailable
+                        else {
+                             ?>
+                            <img src="<?php echo HOMEURL; ?>images/food/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                            <?php
+                        } ?>
                     </div>
 
                     <div class="food-menu-desc">
-                        <h3>Food Title</h3>
-                        <p class="food-price">$2.3</p>
+                        <h3><?php echo $title; ?></h3>
+                        <p class="food-price"><?php echo $price; ?></p>
 
                         <div class="order-label">Quantity</div>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
