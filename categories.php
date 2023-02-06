@@ -12,10 +12,8 @@
 </head>
 
 <body>
-
     <!-- navbarPortion -->
-        <?php include './front-end-partials/menu.php'; ?>
-
+    <?php include './front-end-partials/menu.php'; ?>
     <!-- CAtegories Section Starts Here -->
     <section class="categories">
         <div class="container">

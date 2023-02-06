@@ -16,7 +16,7 @@
   <body>
     <!-- Menu Section -->
 
-    <?php include 'partials/menu.php';?>
+    <?php include 'partials/menu.php'; ?>
 
     <!-- Main Content Section-->
 
@@ -31,66 +31,54 @@
         <a href="add-food.php" class="btn-new-admin">Add New Food Item</a>
 
         <br /><br /><br />
-
         <!-- Printing success message -->
         <?php
-
-if (isset($_SESSION['add-food'])) {
-    echo $_SESSION['add-food'];
-    // Ending session
-    unset($_SESSION['add-food']);
-}
-
-if (isset($_SESSION['update-food'])) {
-    echo $_SESSION['update-food'];
-    // Ending session
-    unset($_SESSION['update-food']);
-}
-
-if (isset($_SESSION['failed-to-delete-food-item-image'])) {
-    echo $_SESSION['failed-to-delete-food-item-image'];
-    // Ending session
-    unset($_SESSION['failed-to-delete-food-item-image']);
-}
-
-if (isset($_SESSION['delete-food-item'])) {
-    echo $_SESSION['delete-food-item'];
-    // Ending session
-    unset($_SESSION['delete-food-item']);
-}
-
-if (isset($_SESSION['failed-to-update-upload-image'])) {
-    echo $_SESSION['failed-to-update-upload-image'];
-    // Ending session
-    unset($_SESSION['failed-to-update-upload-image']);
-}
-
-if (isset($_SESSION['failed-to-remove-current-food-image'])) {
-    echo $_SESSION['failed-to-remove-current-food-image'];
-    // Ending session
-    unset($_SESSION['failed-to-remove-current-food-image']);
-}
-
-if (isset($_SESSION['no-food-found'])) {
-    echo $_SESSION['no-food-found'];
-    // Ending session
-    unset($_SESSION['no-food-found']);
-}
-
-if (isset($_SESSION['failed-to-upload-food-image'])) {
-    echo $_SESSION['failed-to-upload-food-image'];
-    // Ending session
-    unset($_SESSION['failed-to-upload-food-image']);
-}
-
-if (isset($_SESSION['failed-to-remove-food-image-file'])) {
-    echo $_SESSION['failed-to-remove-food-image-file'];
-    // Ending session
-    unset($_SESSION['failed-to-remove-food-image-file']);
-}
-
-?>
-
+        if (isset($_SESSION['add-food'])) {
+            echo $_SESSION['add-food'];
+            // Ending session
+            unset($_SESSION['add-food']);
+        }
+        if (isset($_SESSION['update-food'])) {
+            echo $_SESSION['update-food'];
+            // Ending session
+            unset($_SESSION['update-food']);
+        }
+        if (isset($_SESSION['failed-to-delete-food-item-image'])) {
+            echo $_SESSION['failed-to-delete-food-item-image'];
+            // Ending session
+            unset($_SESSION['failed-to-delete-food-item-image']);
+        }
+        if (isset($_SESSION['delete-food-item'])) {
+            echo $_SESSION['delete-food-item'];
+            // Ending session
+            unset($_SESSION['delete-food-item']);
+        }
+        if (isset($_SESSION['failed-to-update-upload-image'])) {
+            echo $_SESSION['failed-to-update-upload-image'];
+            // Ending session
+            unset($_SESSION['failed-to-update-upload-image']);
+        }
+        if (isset($_SESSION['failed-to-remove-current-food-image'])) {
+            echo $_SESSION['failed-to-remove-current-food-image'];
+            // Ending session
+            unset($_SESSION['failed-to-remove-current-food-image']);
+        }
+        if (isset($_SESSION['no-food-found'])) {
+            echo $_SESSION['no-food-found'];
+            // Ending session
+            unset($_SESSION['no-food-found']);
+        }
+        if (isset($_SESSION['failed-to-upload-food-image'])) {
+            echo $_SESSION['failed-to-upload-food-image'];
+            // Ending session
+            unset($_SESSION['failed-to-upload-food-image']);
+        }
+        if (isset($_SESSION['failed-to-remove-food-image-file'])) {
+            echo $_SESSION['failed-to-remove-food-image-file'];
+            // Ending session
+            unset($_SESSION['failed-to-remove-food-image-file']);
+        }
+        ?>
         <br />
 
         <table class="tbl-full">
@@ -106,44 +94,37 @@ if (isset($_SESSION['failed-to-remove-food-image-file'])) {
           </tr>
 
           <?php
-$sql = "SELECT * FROM tbl_food";
+          $sql = 'SELECT * FROM tbl_food';
 
-$res = mysqli_query($conn, $sql);
+          $res = mysqli_query($conn, $sql);
 
-if ($res == true) {
+          if ($res == true) {
+              // Count rows for checking data availibility
+              $count = mysqli_num_rows($res);
 
-    // Count rows for checking data availibility
-    $count = mysqli_num_rows($res);
+              $sn = 1;
 
-    $sn = 1;
+              if ($count > 0) {
+                  while ($rows = mysqli_fetch_assoc($res)) {
 
-    if ($count > 0) {
-        while ($rows = mysqli_fetch_assoc($res)) {
-            //Run as long as data is available
-            $id = $rows['id'];
-            $title = $rows['title'];
-            $price = $rows['price'];
-            $image_name = $rows['image_name'];
-            $featured = $rows['featured'];
-            $active = $rows['active'];
-            ?>
+                      //Run as long as data is available
+                      $id = $rows['id'];
+                      $title = $rows['title'];
+                      $price = $rows['price'];
+                      $image_name = $rows['image_name'];
+                      $featured = $rows['featured'];
+                      $active = $rows['active'];
+                      ?>
 
             <tr>
               <td><?php echo $sn++; ?></td>
               <td><?php echo $title; ?></td>
               <td><?php echo $price; ?></td>
               <td>
-                <?php
-// Check if image name is available ?
-
-            if ($image_name != "") {
-                ?>
+              <!-- Check if image name is available ? -->
+                <?php if ($image_name != '') { ?>
                   <img src="<?php echo HOMEURL; ?>images/food/<?php echo $image_name; ?>" width="100px">
-                  <?php
-} else {
-                echo "<div class='message'>Image Not Uploaded !</div>";
-            }
-            ?>
+                  <?php } else {echo "<div class='message'>Image Not Uploaded !</div>";} ?>
               </td>
               <td><?php echo $featured; ?></td>
               <td><?php echo $active; ?></td>
@@ -163,20 +144,18 @@ if ($res == true) {
               </tr>
 
             <?php
-
-        }
-
-    } else {
-        ?>
+                  }
+              } else {
+                   ?>
             <tr>
               <td colspan="6">
                 <div class="message">No Food Item Found !</div>
               </td>
             </tr>
             <?php
-}
-}
-?>
+              }
+          }
+          ?>
 
         </table>
       </div>
@@ -184,6 +163,6 @@ if ($res == true) {
 
     <!-- Footer Section -->
 
-    <?php include 'partials/footer.php';?>
+    <?php include 'partials/footer.php'; ?>
   </body>
 </html>

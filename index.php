@@ -22,7 +22,7 @@
 
             <form action="<?php echo HOMEURL; ?>food-search.php" method="POST">
                 <input type="search" name="search" placeholder="Search for Food.." required>
-                <input type="submit" name="submit" value="Search" class="btn btn-primary">
+                <input type="submit" name="submit" value="Search" class="search-btn btn btn-primary">
             </form>
 
         </div>
@@ -158,7 +158,7 @@
                         </p>
                         <br>
                         <!-- passingFoodOrderWithSpecificFoodID -->
-                        <a href="<?php echo HOMEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
+                        <a href="<?php echo HOMEURL; ?>order.php?food_id=<?php echo $id; ?>" class="order-now-btn btn">Order Now</a>
                     </div>
                 </div>
                     <?php

@@ -15,15 +15,11 @@
   </head>
   <body>
     <!-- Menu Section -->
-
     <?php include 'partials/menu.php'; ?>
-
     <!-- Main Content Section-->
-
     <div class="main-content">
       <div class="wrapper">
         <h3>Update Food Item</h3>
-
 <?php if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
@@ -44,8 +40,7 @@
     }
 } else {
     // If no data is found redirect to manage-admin page with session message
-
-    $_SESSION['no-food-found'] = 'Selected Food Item Not Found !';
+    $_SESSION['no-food-found'] = 'Selected food item is unavailable !';
     header('location:' . HOMEURL . 'admin/manage-food.php');
 } ?>
         <form action="" method="POST" enctype="multipart/form-data">
@@ -73,7 +68,6 @@
     <?php } else {echo "<div class='left-alligned-message'>Image Not Uploaded !</div>";} ?>
               </td>
             </tr>
-
             <tr>
               <td>New Image :</td>
               <td>
@@ -131,7 +125,6 @@
               <td colspan="2">
                 <input type="hidden" name="current_image" value="<?php echo $current_image; ?>" />
                 <input type="hidden" name="id" value="<?php echo $id; ?>" />
-
                 <input
                   type="submit"
                   name="submit"
@@ -145,7 +138,6 @@
         </form>
       </div>
     </div>
-
     <?php if (isset($_POST['submit'])) {
         $id = $_POST['id'];
         $title = $_POST['title'];
@@ -177,11 +169,9 @@
 
                 if ($upload == false) {
                     // If upload failed ?
-
                     $_SESSION['failed-to-upload-food-image'] =
-                        'Failed To Upload Image !';
+                        'Failed to upload image !';
                     header('location:' . HOMEURL . 'admin/manage-food.php');
-
                     // Stop Processing
                     die();
                 }
@@ -197,7 +187,6 @@
                         $_SESSION['failed-to-remove-food-image-file'] =
                             'Failed To Remove Current Image';
                         header('location:' . HOMEURL . 'admin/manage-food.php');
-
                         // Stop all further procedure !
                         die();
                     }
@@ -209,27 +198,25 @@
         }
 
         $sql2 = "UPDATE tbl_food SET
-    title='$title',
-    price='$price',
-    image_name='$image_name',
-    featured='$featured',
-    active='$active'
-    WHERE id=$id
-    ";
+        title='$title',
+        price='$price',
+        image_name='$image_name',
+        featured='$featured',
+        active='$active'
+        WHERE id=$id
+        ";
 
         $res2 = mysqli_query($conn, $sql2);
 
         if ($res2 == true) {
-            $_SESSION['update-food'] = 'Food Item Updated Successfully !';
+            $_SESSION['update-food'] = 'Food item updated successfully !';
             header('location:' . HOMEURL . 'admin/manage-food.php');
         } else {
-            $_SESSION['update-food'] = 'Food Item Updation Failed !';
+            $_SESSION['update-food'] = 'Food item updation failed !';
             header('location:' . HOMEURL . 'admin/manage-food.php');
         }
     } ?>
-
     <!-- Footer Section -->
-
     <?php include 'partials/footer.php'; ?>
   </body>
 </html>

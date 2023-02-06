@@ -27,6 +27,7 @@
 
 .text-right {
   text-align: right;
+  color: #f8801d;
 }
 .text-center {
   text-align: center;
@@ -52,20 +53,14 @@ a:hover {
 }
 
 .btn {
-  padding: 1%;
   border: none;
   font-size: 1rem;
   border-radius: 5px;
-}
-.btn-primary {
-  background-color: #ff6b81;
-  color: white;
+  background-color: white;
+  color: #f8801d;
   cursor: pointer;
 }
-.btn-primary:hover {
-  color: white;
-  background-color: #ff4757;
-}
+
 h2 {
   color: #2f3542;
   font-size: 2rem;
@@ -98,9 +93,11 @@ fieldset {
 }
 .menu {
   line-height: 60px;
+  color: #f8801d;
 }
 .menu ul {
   list-style-type: none;
+  color: #f8801d;
 }
 
 .menu ul li {
@@ -264,4 +261,34 @@ fieldset {
 .success-message {
   text-align: center;
   justify-content: center;
+}
+
+/* searchButtonStyles */
+
+.search-btn {
+  background-color: #f8801d;
+  color: white;
+  padding: 1%;
+}
+
+.search-btn:hover {
+  background-color: white;
+  color: #f8801d;
+  font-weight: 700;
+  border: 2px solid #f8801d;
+}
+
+/* orderNowButtonStyles */
+
+.order-now-btn {
+  padding: 2%;
+  background-color: #f8801d;
+  color: white;
+}
+
+.order-now-btn:hover {
+  background-color: white;
+  color: #f8801d;
+  font-weight: 700;
+  border: 2px solid #f8801d;
 }
