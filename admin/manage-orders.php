@@ -43,7 +43,7 @@
           </tr>
           <?php
           // getAllTheOrdersFromDatabase
-          $sql = 'SELECT * FROM tbl_order';
+          $sql = 'SELECT * FROM tbl_order ORDER BY id DESC';
           $res = mysqli_query($conn, $sql);
           $count = mysqli_num_rows($res);
 
