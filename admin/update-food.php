@@ -16,7 +16,7 @@
   <body>
     <!-- Menu Section -->
 
-    <?php include 'partials/menu.php';?>
+    <?php include 'partials/menu.php'; ?>
 
     <!-- Main Content Section-->
 
@@ -24,10 +24,7 @@
       <div class="wrapper">
         <h3>Update Food Item</h3>
 
-<?php
-
-if (isset($_GET['id'])) {
-
+<?php if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     $sql = "SELECT * FROM tbl_food WHERE id=$id";
@@ -37,7 +34,6 @@ if (isset($_GET['id'])) {
     $count = mysqli_num_rows($res);
 
     if ($count == 1) {
-
         $row = mysqli_fetch_assoc($res);
 
         $title = $row['title'];
@@ -45,18 +41,13 @@ if (isset($_GET['id'])) {
         $current_image = $row['image_name'];
         $featured = $row['featured'];
         $active = $row['active'];
-
     }
-
 } else {
-
     // If no data is found redirect to manage-admin page with session message
 
-    $_SESSION['no-food-found'] = "Selected Food Item Not Found !";
+    $_SESSION['no-food-found'] = 'Selected Food Item Not Found !';
     header('location:' . HOMEURL . 'admin/manage-food.php');
-
-}
-?>
+} ?>
         <form action="" method="POST" enctype="multipart/form-data">
           <!-- enctype="multipart/form-data" >>> To Add Image File In Form -->
 
@@ -68,7 +59,7 @@ if (isset($_GET['id'])) {
                   type="text"
                   name="title"
                   placeholder="Enter New Title ?"
-                  value="<?php echo $title ?>"
+                  value="<?php echo $title; ?>"
                 />
               </td>
             </tr>
@@ -77,21 +68,9 @@ if (isset($_GET['id'])) {
               <td>Current Image :</td>
               <td>
                 <!-- Old Image is displayed -->
-                <?php
-
-if ($current_image != "") {
-
-    ?>
+                <?php if ($current_image != '') { ?>
     <img src="<?php echo HOMEURL; ?>images/food/<?php echo $current_image; ?>" width="100px">
-    <?php
-
-} else {
-
-    echo "<div class='left-alligned-message'>Image Not Uploaded !</div>";
-
-}
-
-?>
+    <?php } else {echo "<div class='left-alligned-message'>Image Not Uploaded !</div>";} ?>
               </td>
             </tr>
 
@@ -113,7 +92,7 @@ if ($current_image != "") {
                   type="number"
                   name="price"
                   placeholder="Enter Updated Price ?"
-                  value="<?php echo $price ?>"
+                  value="<?php echo $price; ?>"
                 />
               </td>
             </tr>
@@ -121,10 +100,14 @@ if ($current_image != "") {
             <tr>
               <td>Featured :</td>
               <td>
-                <input <?php if ($featured == "Yes") {echo "checked";}?> type="radio" name="featured" value="Yes" />
+                <input <?php if ($featured == 'Yes') {
+                    echo 'checked';
+                } ?> type="radio" name="featured" value="Yes" />
                 Yes
 
-                <input <?php if ($featured == "No") {echo "checked";}?> type="radio" name="featured" value="No" />
+                <input <?php if ($featured == 'No') {
+                    echo 'checked';
+                } ?> type="radio" name="featured" value="No" />
                 No
               </td>
             </tr>
@@ -132,10 +115,14 @@ if ($current_image != "") {
             <tr>
               <td>Active :</td>
               <td>
-                <input <?php if ($active == "Yes") {echo "checked";}?> type="radio" name="active" value="Yes" />
+                <input <?php if ($active == 'Yes') {
+                    echo 'checked';
+                } ?> type="radio" name="active" value="Yes" />
                 Yes
 
-                <input <?php if ($active == "No") {echo "checked";}?> type="radio" name="active" value="No" />
+                <input <?php if ($active == 'No') {
+                    echo 'checked';
+                } ?> type="radio" name="active" value="No" />
                 No
               </td>
             </tr>
@@ -159,80 +146,69 @@ if ($current_image != "") {
       </div>
     </div>
 
-    <?php
+    <?php if (isset($_POST['submit'])) {
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+        $price = $_POST['price'];
+        $current_image = $_POST['current_image'];
+        $featured = $_POST['featured'];
+        $active = $_POST['active'];
 
-if (isset($_POST['submit'])) {
+        if (isset($_FILES['image']['name'])) {
+            //Upload Image
 
-    $id = $_POST['id'];
-    $title = $_POST['title'];
-    $price = $_POST['price'];
-    $current_image = $_POST['current_image'];
-    $featured = $_POST['featured'];
-    $active = $_POST['active'];
+            // Auto-Rename our images
+            $new_image = $_FILES['image']['name'];
 
-    if (isset($_FILES['image']['name'])) {
+            if ($new_image != '') {
+                $ext = explode('.', $new_image);
 
-        //Upload Image
+                $extension = end($ext);
 
-        // Auto-Rename our images
-        $new_image = $_FILES['image']['name'];
+                $new_image_renamed = 'food-item-' . $title . '.' . $extension;
 
-        if ($new_image != "") {
+                $source_path = $_FILES['image']['tmp_name'];
 
-            $ext = explode(".", $new_image);
+                $destination_path = '../images/category/' . $new_image_renamed;
 
-            $extension = end($ext);
+                $upload = move_uploaded_file($source_path, $destination_path);
 
-            $new_image_renamed = "food-item-" . $title . "." . $extension;
+                // Check Uploaded/ Not ?
 
-            $source_path = $_FILES['image']['tmp_name'];
+                if ($upload == false) {
+                    // If upload failed ?
 
-            $destination_path = "../images/category/" . $new_image_renamed;
-
-            $upload = move_uploaded_file($source_path, $destination_path);
-
-            // Check Uploaded/ Not ?
-
-            if ($upload == false) {
-                // If upload failed ?
-
-                $_SESSION['failed-to-upload-food-image'] = "Failed To Upload Image !";
-                header("location:" . HOMEURL . 'admin/manage-food.php');
-
-                // Stop Processing
-                die();
-
-            }
-
-            // Remove image from variable/ folder !
-
-            if ($new_image != "") {
-
-                $remove_path = "../images/food/" . $current_image;
-
-                $remove_image = unlink($remove_path);
-
-                if ($remove_image == false) {
-
-                    $_SESSION['failed-to-remove-food-image-file'] = "Failed To Remove Current Image";
+                    $_SESSION['failed-to-upload-food-image'] =
+                        'Failed To Upload Image !';
                     header('location:' . HOMEURL . 'admin/manage-food.php');
 
-                    // Stop all further procedure !
+                    // Stop Processing
                     die();
                 }
 
-            }
+                // Remove image from variable/ folder !
 
+                if ($new_image != '') {
+                    $remove_path = '../images/food/' . $current_image;
+
+                    $remove_image = unlink($remove_path);
+
+                    if ($remove_image == false) {
+                        $_SESSION['failed-to-remove-food-image-file'] =
+                            'Failed To Remove Current Image';
+                        header('location:' . HOMEURL . 'admin/manage-food.php');
+
+                        // Stop all further procedure !
+                        die();
+                    }
+                }
+            }
+        } else {
+            // Upload Rejected !
+            $image_name = $current_image;
         }
 
-    } else {
-
-        // Upload Rejected !
-        $image_name = $current_image;
-
-    }
-
-    $sql2 = "UPDATE tbl_food SET
+        $sql2 = "UPDATE tbl_food SET
     title='$title',
     price='$price',
     image_name='$image_name',
@@ -241,25 +217,20 @@ if (isset($_POST['submit'])) {
     WHERE id=$id
     ";
 
-    $res2 = mysqli_query($conn, $sql2);
+        $res2 = mysqli_query($conn, $sql2);
 
-    if ($res2 == true) {
-
-        $_SESSION['update-food'] = "Food Item Updated Successfully !";
-        header('location:' . HOMEURL . 'admin/manage-food.php');
-
-    } else {
-
-        $_SESSION['update-food'] = "Food Item Updation Failed !";
-        header('location:' . HOMEURL . 'admin/manage-food.php');
-
-    }
-}
-?>
+        if ($res2 == true) {
+            $_SESSION['update-food'] = 'Food Item Updated Successfully !';
+            header('location:' . HOMEURL . 'admin/manage-food.php');
+        } else {
+            $_SESSION['update-food'] = 'Food Item Updation Failed !';
+            header('location:' . HOMEURL . 'admin/manage-food.php');
+        }
+    } ?>
 
     <!-- Footer Section -->
 
-    <?php include 'partials/footer.php';?>
+    <?php include 'partials/footer.php'; ?>
   </body>
 </html>
 
