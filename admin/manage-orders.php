@@ -23,11 +23,14 @@
     <div class="main-content">
       <div class="wrapper">
         <h2 style="text-align: center">Manage Orders</h2>
-
         <br />
-
+        <!-- checkFoUpdateOrderSessions?Failed?Passed? -->
+        <?php if (isset($_SESSION['update-order'])) {
+            echo $_SESSION['update-order'];
+            unset($_SESSION['update-order']);
+        } ?>
+        <br />
         <table class="tbl-full">
-
           <tr>
             <th>Serial Number</th>
             <th>Food</th>
@@ -77,7 +80,7 @@
                 <td><?php echo $customer_email; ?></td>
                 <td><?php echo $customer_address; ?></td>
                 <td>
-                  <a href="#" class="btn-table">Update Admin</a>
+                  <a href="<?php echo HOMEURL; ?>admin/update-order.php?id=<?php echo $id; ?>" class="btn-table">Update Order</a>
                   <a href="#" class="btn-table">Delete Admin</a>
                 </td>
               </tr>
