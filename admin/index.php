@@ -13,36 +13,43 @@
     />
     <!-- Custom CSS -->
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
-      
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
       body {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         height: 100vh;
         width: 100vw;
-        padding : 0;
-        margin : 0;
+        padding: 0;
+        margin: 0;
         box-sizing: border-box;
       }
-
-      .main-container { 
-        display: flex; 
-        align-items :center;
+      .main-container {
+        display: flex;
+        align-items: center;
         justify-content: center;
-        height : 80%;
+        height: 80%;
       }
-      .content { 
+      .content {
         width: 100%;
       }
-
       .table-responsive {
         margin: auto;
       }
       th {
         text-align: center;
+        vertical-align: middle;
       }
       td {
         text-align: center;
-        border: none;
+        vertical-align: middle;
+      }
+      h3 {
+        text-align: center;
+        align-items: center;
+      }
+      h4 {
+        text-align: center;
+        align-items: center;
       }
     </style>
 
