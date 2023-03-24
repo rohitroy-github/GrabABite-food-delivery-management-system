@@ -8,100 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <!-- Custom CSS -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            height: 100vh;
-            width: 100vw;
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        .main-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 80%;
-            overflow: auto;
-        }
-
-        .content {
-            width: 100%;
-        }
-
-        .table-responsive {
-            margin: auto;
-        }
-
-        th {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        td {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        p {
-            text-align: center;
-            align-items: center;
-            padding: 7px 12px;
-            font-size: 15px;
-        }
-
-        h5 {
-            text-align: center;
-            align-items: center;
-            margin: 0;
-        }
-
-        .btn {
-            padding: 7px 12px;
-            font-size: 15px;
-        }
-
-        tbody .adminPanelBtn {
-            background-color: #fc8019;
-            border-color: #fc8019;
-            font-weight: 800;
-            color: white;
-        }
-
-        .adminPanelBtn:hover {
-            background-color: #ffffff;
-            color: black;
-            border-color: #fc8019;
-            font-weight: 800;
-        }
-
-        .content .adminPanelBtn { 
-          background-color: #fc8019;
-            border-color: #fc8019;
-            font-weight: 800;
-            color: white;
-        }
-
-        .content .adminPanelBtn:hover {
-            background-color: #ffffff;
-            color: black;
-            border-color: #fc8019;
-            font-weight: 800;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/adminStyles.css">
     <title>GrabABite - Admins</title>
 </head>
 
 <body>
-    <!-- navbar -->
+    <!-- Menu Section -->
+    <div class="top-container">
+      <?php include './partials/menu.php'; ?>
+    </div>  
 
-    <?php include './partials/menu.php'; ?>
-
-    <!-- mainContent -->
+    <!-- Main Content Section-->
     <div class="main-container container">
         <div class="content">
             <h2 style="font-weight: 500; text-align: center;">
@@ -237,9 +154,10 @@
         </div>
     </div>
 
-    <!-- footer -->
-
+   <!-- footerSection -->
+   <div class="bottom-container">
     <?php include 'partials/footer.php'; ?>
+  </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

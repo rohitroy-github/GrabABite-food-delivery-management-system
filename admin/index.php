@@ -11,61 +11,23 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <!-- Custom CSS -->
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
-
-      body {
-        font-family: 'Montserrat', sans-serif;
-        height: 100vh;
-        width: 100vw;
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-      .main-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 80%;
-      }
-      .content {
-        width: 100%;
-      }
-      .table-responsive {
-        margin: auto;
-      }
-      th {
-        text-align: center;
-        vertical-align: middle;
-      }
-      td {
-        text-align: center;
-        vertical-align: middle;
-      }
-      h3 {
-        text-align: center;
-        align-items: center;
-      }
-      h4 {
-        text-align: center;
-        align-items: center;
-      }
-    </style>
+    <link rel="stylesheet" href="../css/adminStyles.css">
 
     <title>GrabABite - Admin's Panel</title>
   </head>
   <body>
     <!-- Menu Section -->
-    <?php include './partials/menu.php'; ?>
+    <div class="top-container">
+      <?php include './partials/menu.php'; ?>
+    </div>  
 
     <?php if (isset($_SESSION['login'])) {
         echo $_SESSION['login'];
         unset($_SESSION['login']);
     } ?>
 
-    <!-- Main Content Section-->
-  <div class="main-container container">
+    <!-- mainContentSection -->
+    <div class="main-container container">
     <div class="content">
       <h2 style="font-weight: 500; padding: 3%; text-align: center">
         <b>Dashboard</b>
@@ -131,7 +93,10 @@
     </div>
   </div>
 
+  <!-- footerSection -->
+  <div class="bottom-container">
     <?php include 'partials/footer.php'; ?>
+  </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
