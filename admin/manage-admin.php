@@ -26,6 +26,7 @@
             align-items: center;
             justify-content: center;
             height: 80%;
+            overflow: auto;
         }
 
         .content {
