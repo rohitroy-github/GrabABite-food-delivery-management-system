@@ -49,17 +49,19 @@
         p {
             text-align: center;
             align-items: center;
-            padding: 0.25rem 0.5rem;
+            padding: 7px 12px;
+            font-size: 15px;
         }
 
         h5 {
             text-align: center;
             align-items: center;
+            margin: 0;
         }
 
         .btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.875rem;
+            padding: 7px 12px;
+            font-size: 15px;
         }
 
         tbody .adminPanelBtn {
