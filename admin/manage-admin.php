@@ -71,7 +71,21 @@
 
         .adminPanelBtn:hover {
             background-color: #ffffff;
-            color: blue;
+            color: black;
+            border-color: #fc8019;
+            font-weight: 800;
+        }
+
+        .content .adminPanelBtn { 
+          background-color: #fc8019;
+            border-color: #fc8019;
+            font-weight: 800;
+            color: white;
+        }
+
+        .content .adminPanelBtn:hover {
+            background-color: #ffffff;
+            color: black;
             border-color: #fc8019;
             font-weight: 800;
         }
@@ -87,9 +101,12 @@
     <!-- mainContent -->
     <div class="main-container container">
         <div class="content">
-            <h2 style="font-weight: 500; padding: 3%; text-align: center;">
+            <h2 style="font-weight: 500; text-align: center;">
                 <b>Admins</b>
             </h2>
+            <div class="d-flex justify-content-center" style="padding: 1%;">
+            <a href="add-admin.php" class="btn adminPanelBtn">Add New Admin</a>
+</div>
 
             <div>
                 <?php
