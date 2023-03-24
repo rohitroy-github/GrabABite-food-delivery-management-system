@@ -56,9 +56,6 @@
     <title>GrabABite - Admin's Panel</title>
   </head>
   <body>
-    <div class="container">
-      
-    </div>
     <!-- Menu Section -->
     <?php include './partials/menu.php'; ?>
 

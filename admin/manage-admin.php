@@ -1,130 +1,230 @@
-<!-- Manage Admin Panel  -->
-
+<!-- Main CMS/ Admin file  -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <!-- Custom CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
-    <link rel="stylesheet" href="../css/admin.css" />
-
-    <!-- Add Bootstrap Code -->
-
-    <title>Food Ordering App - Home Page</title>
-  </head>
-  <body>
-    <!-- Menu Section -->
-
-    <?php include 'partials/menu.php'; ?>
-
-    <!-- Main Content Section-->
-
-    <div class="main-content">
-      <div class="wrapper">
-        <h2 style="text-align: center">Admin Panel</h2>
-
-        <br />
-
-        <!-- Button to add new admin -->
-
-        <a href="add-admin.php" class="btn-new-admin">Add New Admin</a>
-
-        <br /><br /><br />
-
-        <!-- Printing success message -->
-        <?php
-        if (isset($_SESSION['add'])) {
-            echo $_SESSION['add'];
-            // Ending session
-            unset($_SESSION['add']);
+        body {
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
         }
 
-        if (isset($_SESSION['delete'])) {
-            echo $_SESSION['delete'];
-            // Ending session
-            unset($_SESSION['delete']);
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80%;
         }
 
-        if (isset($_SESSION['update'])) {
-            echo $_SESSION['update'];
-            // Ending session
-            unset($_SESSION['update']);
+        .content {
+            width: 100%;
         }
 
-        if (isset($_SESSION['update-password'])) {
-            echo $_SESSION['update-password'];
-            // Ending session
-            unset($_SESSION['update-password']);
+        .table-responsive {
+            margin: auto;
         }
 
-        if (isset($_SESSION['user-not-found'])) {
-            echo $_SESSION['user-not-found'];
-            // Ending session
-            unset($_SESSION['user-not-found']);
+        th {
+            text-align: center;
+            vertical-align: middle;
         }
 
-        if (isset($_SESSION['password-not-match'])) {
-            echo $_SESSION['password-not-match'];
-            // Ending session
-            unset($_SESSION['password-not-match']);
+        td {
+            text-align: center;
+            vertical-align: middle;
         }
-        ?>
 
-        <br />
+        p {
+            text-align: center;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
+        }
 
-        <table class="tbl-full">
-          <tr>
-            <th>Serial Number</th>
-            <th>Fullname</th>
-            <th>Username</th>
-            <th>Actions</th>
-          </tr>
+        h5 {
+            text-align: center;
+            align-items: center;
+        }
 
-          <?php
-          $sql = 'SELECT * FROM tbl_admin';
+        .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
 
-          $res = mysqli_query($conn, $sql);
+        tbody .adminPanelBtn {
+            background-color: #fc8019;
+            border-color: #fc8019;
+            font-weight: 800;
+            color: white;
+        }
 
-          if ($res == true) {
-              // Count rows for checking data availibility
-              $count = mysqli_num_rows($res);
+        .adminPanelBtn:hover {
+            background-color: #ffffff;
+            color: blue;
+            border-color: #fc8019;
+            font-weight: 800;
+        }
+    </style>
+    <title>GrabABite - Admins</title>
+</head>
 
-              $sn = 1;
+<body>
+    <!-- navbar -->
 
-              if ($count > 0) {
-                  while ($rows = mysqli_fetch_assoc($res)) {
+    <?php include './partials/menu.php'; ?>
 
-                      //Run as long as data is available
-                      $id = $rows['id'];
-                      $full_name = $rows['full_name'];
-                      $username = $rows['username'];
-                      ?>
+    <!-- mainContent -->
+    <div class="main-container container">
+        <div class="content">
+            <h2 style="font-weight: 500; padding: 3%; text-align: center;">
+                <b>Admins</b>
+            </h2>
 
-          <tr>
-            <td><?php echo $sn++; ?></td>
-            <td><?php echo $full_name; ?></td>
-            <td><?php echo $username; ?></td>
-            <td>
-              <a href="<?php echo HOMEURL; ?>admin/update-passowrd.php?id=<?php echo $id; ?>" class="btn-table">Change Password</a>
+            <div>
+                <?php
+                if (isset($_SESSION['add'])) {
+                    echo $_SESSION['add'];
+                    // Ending session
+                    unset($_SESSION['add']);
+                }
 
-              <a href="<?php echo HOMEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>" class="btn-table">Update Admin</a>
+                if (isset($_SESSION['delete'])) {
+                    echo $_SESSION['delete'];
+                    // Ending session
+                    unset($_SESSION['delete']);
+                }
 
-              <a href="<?php echo HOMEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>" class="btn-table">Delete Admin</a>
-            </td>
-          </tr>
+                if (isset($_SESSION['update'])) {
+                    echo $_SESSION['update'];
+                    // Ending session
+                    unset($_SESSION['update']);
+                }
 
-          <?php
-                  }
-              }
-          }
-          ?>
-        </table>
-      </div>
+                if (isset($_SESSION['update-password'])) {
+                    echo $_SESSION['update-password'];
+                    // Ending session
+                    unset($_SESSION['update-password']);
+                }
+
+                if (isset($_SESSION['user-not-found'])) {
+                    echo $_SESSION['user-not-found'];
+                    // Ending session
+                    unset($_SESSION['user-not-found']);
+                }
+
+                if (isset($_SESSION['password-not-match'])) {
+                    echo $_SESSION['password-not-match'];
+                    // Ending session
+                    unset($_SESSION['password-not-match']);
+                }
+                ?>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h5><b>Serial Number</b></h5>
+                            </th>
+                            <th>
+                                <h5><b>Full Name</b></h5>
+                            </th>
+                            <th>
+                                <h5><b>Username</b></h5>
+                            </th>
+                            <th>
+                                <h5><b>Actions</b></h5>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        $sql = 'SELECT * FROM tbl_admin';
+
+                        $res = mysqli_query($conn, $sql);
+
+                        if ($res == true) {
+                            // Count rows for checking data availibility
+                            $count = mysqli_num_rows($res);
+
+                            $sn = 1;
+
+                            if ($count > 0) {
+                                while ($rows = mysqli_fetch_assoc($res)) {
+
+                                    //Run as long as data is available
+                                    $id = $rows['id'];
+                                    $full_name = $rows['full_name'];
+                                    $username = $rows['username'];
+                                    ?>
+
+                        <tr>
+                            <td>
+                                <p>
+                                    <?php echo $sn++; ?>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <?php echo $full_name; ?>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <?php echo $username; ?>
+                                </p>
+
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <a href="<?php echo HOMEURL; ?>admin/update-passowrd.php?id=<?php echo $id; ?>"
+                                        class="btn adminPanelBtn mr-2">
+                                        Change Password
+                                    </a>
+                                    <a href="<?php echo HOMEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>"
+                                        class="btn adminPanelBtn mr-2">
+                                        Update Admin
+                                    </a>
+                                    <a href="<?php echo HOMEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>"
+                                        class="btn adminPanelBtn">
+                                        Delete Admin
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <?php
+                                }
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- footer -->
 
     <?php include 'partials/footer.php'; ?>
-  </body>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
 </html>
