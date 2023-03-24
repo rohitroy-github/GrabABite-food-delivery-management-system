@@ -1,0 +1,177 @@
+/* Styling for Admin Section */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.wrapper {
+  border: 1px solid black;
+  padding: 1%;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.message {
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+}
+
+.menu {
+  text-align: center;
+}
+
+.menu ul {
+  list-style-type: none;
+}
+
+.menu ul li {
+  display: inline;
+  padding: 1%;
+}
+
+.main-content {
+  margin: 1% 0;
+  padding: 3% 0;
+  text-align: center;
+}
+
+.col-4 {
+  width: 19%;
+  background-color: azure;
+  margin: 1%;
+  padding: 2%;
+  text-align: center;
+  float: left;
+}
+
+.clearfix {
+  float: none;
+  clear: both;
+}
+
+/* manage-admin */
+
+.tbl-full {
+  width: 100%;
+}
+
+.table tr th {
+  border-bottom: 1px solid black;
+  padding: 1%;
+  text-align: center;
+}
+
+.table tr td {
+  padding: 1%;
+  text-align: center;
+}
+
+.btn-new-admin {
+  background-color: gray;
+  padding: 1%;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-table {
+  background-color: gray;
+  padding: 2%;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* add-admin.php */
+
+.tbl-30 {
+  width: 30%;
+}
+
+.tbl-30 tr {
+  text-align: left;
+}
+
+/* CSS for login page */
+
+body {
+  background-color: #f1f1f1;
+}
+.login-form {
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 25px #ccc;
+}
+.login-form input {
+  margin-bottom: 20px;
+}
+.login-form button {
+  width: 100%;
+}
+
+.btn-primaryColor {
+  background-color: #fc8019;
+  color: white;
+  font-weight: 800;
+  border: 2px solid white;
+}
+
+.btn-primaryColor:hover {
+  background-color: white;
+  color: #fc8019;
+  border: 2px solid #fc8019;
+}
+
+/* Center the form horizontally and vertically */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* CSS for add-category Page */
+
+.add-category-tbl-30 {
+  width: 40%;
+}
+
+.add-category-tbl-30 tr {
+  text-align: left;
+}
+
+/* CSS For update-category Page */
+
+.update-category-tbl-30 tr {
+  text-align: left;
+}
+
+.left-alligned-message {
+  text-align: left;
+}
+
+.update-category-tbl-30 {
+  width: 40%;
+}
+
+/* Food pages */
+
+.btn-new-food {
+  background-color: gray;
+  padding: 1%;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}

@@ -1,0 +1,27 @@
+#about-us {
+  padding: 50px 0;
+  background-color: #ececec;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#about-us h2 {
+  margin-bottom: 30px;
+  font-size: 36px;
+}
+
+#about-us p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+#about-us img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
