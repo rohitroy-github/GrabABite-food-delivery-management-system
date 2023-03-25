@@ -22,7 +22,7 @@
     <div class="main-container container">
         <div class="content">
             <h2 style="font-weight: 500; text-align: center;">
-                <b>Admins</b>
+                <b>Manage Admins</b>
             </h2>
             <div class="d-flex justify-content-center" style="padding: 1%;">
             <a href="add-admin.php" class="btn adminPanelBtn">Add New Admin</a>

@@ -29,7 +29,7 @@
     <!-- mainContentSection -->
     <div class="main-container container">
     <div class="content">
-      <h2 style="font-weight: 500; padding: 3%; text-align: center">
+    <h2 style="font-weight: 500; text-align: center;">
         <b>Dashboard</b>
       </h2>
       <div class="table-responsive">
