@@ -44,7 +44,7 @@ include './partials/login-check.php';
                         placeholder="Enter a password" />
                 </div>
                 <button name="submit" type="submit" class="btn btn-primaryColor" value="login">
-                    Login
+                    Add New Admin
                 </button>
             </form>
         </div>

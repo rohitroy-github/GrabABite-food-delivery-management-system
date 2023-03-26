@@ -1,110 +1,74 @@
-<!-- PHP > Add New Food Category ! -->
+<?php
+include '../config/constants.php';
+include './partials/login-check.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/admin.css" />
+    <title>Add New Category</title>
+</head>
 
-    <!-- Add Bootstrap Code -->
+<body>
+    <div class="container">
+        <div class="col-md-6 col-lg-6">
+            <form class="login-form" action="" method="POST" enctype="multipart/form-data">
+                <h2 class="text-center">Add New Category</h2>
+                <br />
+                <!-- Printing SUCCESSS message -->
+                <?php
+                if (isset($_SESSION['add-category'])) {
+                    echo $_SESSION['add-category'];
+                    // Ending session
+                    unset($_SESSION['add-category']);
+                }
 
-    <title>Food Ordering App - Home Page</title>
-  </head>
-  <body>
-    <!-- Menu Section -->
-    <?php include 'partials/menu.php'; ?>
-    <!-- Main Content Section-->
+                if (isset($_SESSION['upload-image-failed'])) {
+                    echo $_SESSION['upload-image-failed'];
+                    // Ending session
+                    unset($_SESSION['upload-image-failed']);
+                }
+                ?>
+                <div class="form-group">
+                    <label for="username">Category Title</label>
+                    <input name="title" type="text" class="form-control" id="title" placeholder="Enter category title ?"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="username">Upload Image</label>
+                    <input name="image" type="file" id="image" placeholder="Upload category image ?" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Featured ?</label>
+                    <input name="featured" type="radio" id="featured" value="Yes" /> Yes
 
-    <div class="main-content">
-      <div class="wrapper">
-        <h2 style="text-align: center">Add New Category</h2>
+                    <input name="featured" type="radio" id="featured" value="No" /> No
+                </div>
+                <div class="form-group">
+                    <label for="password">Active ?</label>
+                    <input name="active" type="radio" id="active" value="Yes" /> Yes
 
-        <!-- Printing success message -->
-        <?php
-        if (isset($_SESSION['add-category'])) {
-            echo $_SESSION['add-category'];
-            // Ending session
-            unset($_SESSION['add-category']);
-        }
-
-        if (isset($_SESSION['upload-image-failed'])) {
-            echo $_SESSION['upload-image-failed'];
-            // Ending session
-            unset($_SESSION['upload-image-failed']);
-        }
-        ?>
-        <!-- Form -->
-
-        <form action="" method="POST" enctype="multipart/form-data">
-          <!-- enctype="multipart/form-data" >>> To Add Image File In Form -->
-
-          <table class="add-category-tbl-30">
-            <tr>
-              <td>Title :</td>
-              <td>
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Category Title ?"
-                />
-              </td>
-            </tr>
-
-            <tr>
-              <td>Select Image :</td>
-              <td>
-                <input
-                  type="file"
-                  name="image"
-                  placeholder="Category Image ?"
-                />
-              </td>
-            </tr>
-
-            <tr>
-              <td>Featured :</td>
-              <td>
-                <input type="radio" name="featured" value="Yes" />
-                Yes
-
-                <input type="radio" name="featured" value="No" />
-                No
-              </td>
-            </tr>
-
-            <tr>
-              <td>Active :</td>
-              <td>
-                <input type="radio" name="active" value="Yes" />
-                Yes
-
-                <input type="radio" name="active" value="No" />
-                No
-              </td>
-            </tr>
-
-            <tr>
-              <td colspan="2">
-                <input
-                  type="submit"
-                  name="submit"
-                  value="Add Category"
-                  class="btn-table"
-                  style="text-align: center"
-                />
-              </td>
-            </tr>
-          </table>
-        </form>
-      </div>
+                    <input name="active" type="radio" id="active" value="No" /> No
+                </div>
+                <button name="submit" type="submit" class="btn btn-primaryColor" value="login">
+                    Add New Category
+                </button>
+            </form>
+        </div>
     </div>
 
-    <!-- Footer Section -->
-    <?php include 'partials/footer.php'; ?>
-  </body>
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
 </html>
 
 <?php if (isset($_POST['submit'])) {
