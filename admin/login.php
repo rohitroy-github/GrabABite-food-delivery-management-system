@@ -12,7 +12,7 @@
       rel="stylesheet"
       href="../css/admin.css"
     />    
-    <title>Login Page</title>
+    <title>Admin Login</title>
   </head>
   <body>
     <?php include '../config/constants.php'; ?>
