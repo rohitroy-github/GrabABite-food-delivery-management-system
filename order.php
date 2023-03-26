@@ -40,6 +40,7 @@
         // getBackToHomePage
         header('location:' . HOMEURL);
     } ?>
+    <section class="food-menu">
     <div class="container">
         <h2 class=" text-center">Checkout</h2>
         <div class="mainContainer">
@@ -158,6 +159,7 @@
             </div>
         </div>
     </div>
+    </section>
     <!-- footerPortion -->
     <?php include './front-end-partials/footer.php'; ?>
     <!-- Bootstrap JS -->

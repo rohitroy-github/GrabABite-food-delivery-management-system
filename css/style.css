@@ -200,12 +200,32 @@ fieldset {
 }
 
 /* CSS for footerSocials */
-.footerSocials ul {
-  list-style-type: none;
+.footerSocials {
+  background-color: #fc8019;
+  color: white;
+  font-weight: 800;
+  font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+
+.socialIcons {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.footerLabel2 a {
+  text-decoration: none;
+  color: white;
+}
+
+.footerSocials ul {
+  padding: 0;
+  margin: 0;
+}
+
 .footerSocials ul li {
   display: inline;
-  padding: 1%;
 }
 
 .footerSocialIcons {
@@ -219,85 +239,6 @@ fieldset {
 
 .footerSocialIcons:hover {
   transform: scale(1.2); /* make the icon grow by 20% on hover */
-}
-
-/* for Order Section */
-
-.foodOrderSection {
-  /* background-image: url(../images/bg.jpg); */
-  box-sizing: border-box;
-  /* padding: 35px 100px 35px 100px; */
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
-.orderSummarySection {
-  /* display: flex;
-  flex-direction: row; */
-  width: 35%;
-  padding: 35px 35px 35px 35px;
-  box-sizing: border-box;
-  background-color: white;
-}
-
-.foorOrderSeparatorSection {
-  width: 5%;
-}
-
-.orderContainer {
-  width: 60%;
-  padding: 2%;
-  padding: 35px 35px 35px 35px;
-  box-sizing: border-box;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-}
-.order {
-  width: 100%;
-  padding-top: 20px;
-}
-.input-responsive {
-  width: 90%;
-  padding: 2%;
-  margin-bottom: 2%;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  background-color: rgb(229, 229, 229);
-}
-.order-label {
-  margin-bottom: 1%;
-  font-weight: bold;
-}
-
-.img-circle {
-  width: 200px;
-  height: 120px;
-}
-
-.footerDiv {
-  position: relative;
-  bottom: 0;
-  box-sizing: border-box;
-  padding: 30px;
-  height: fit-content;
-  background-color: black;
-}
-
-.footerLabel1 {
-  margin-bottom: 2%;
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
-  color: #808080;
-}
-
-.footerLabel2 {
-  margin-top: 2%;
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
-  color: #808080;
 }
 
 /* CSS for Mobile Size or Smaller Screen */

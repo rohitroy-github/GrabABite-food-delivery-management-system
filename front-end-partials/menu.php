@@ -10,7 +10,9 @@
     <!-- bootstrapStyles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
-
+nav { 
+  height: 80px;
+}
 .navbar-light .navbar-brand{
   color: #fc8019;
   font-size: 1.5rem;
