@@ -164,6 +164,7 @@ fieldset {
 .food-menu {
   background-color: #ececec;
   padding: 2% 0;
+  height: max-content;
 }
 .food-menu-box {
   width: 43%;
@@ -207,6 +208,10 @@ fieldset {
   font-size: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
+  bottom: 0;
+  top: auto;
+  position: relative;
+  width: 100%;
 }
 
 .socialIcons {
@@ -300,6 +305,7 @@ fieldset {
 .error-message {
   text-align: center;
   justify-content: center;
+  align-items: center;
 }
 
 .success-message {

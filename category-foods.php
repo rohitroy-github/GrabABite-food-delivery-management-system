@@ -117,7 +117,7 @@
                     } else {
                         // foodUnavailable
                         echo "
-                        <div class = 'error-message'>
+                        <div class = 'error-message text-center'>
                         Searched category isn't having any listed food items at the moment !
                         </div>
                         ";

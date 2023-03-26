@@ -57,7 +57,7 @@
                         $title = $rows['title'];
                         $image_name = $rows['image_name'];
                         ?>
-                    <div class="col-md-3">
+                    <div class="col-md-3 galleryElement">
                         <a href="<?php echo HOMEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
                         <!-- ifImageIsAvailableThenOnlyDisplay -->
                         <?php if ($image_name == '') {
