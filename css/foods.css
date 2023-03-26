@@ -29,3 +29,20 @@
 .btn {
   width: 100%;
 }
+
+.card-body .adminPanelBtn {
+  background-color: #fc8019;
+  border: 3px solid #fc8019;
+  font-weight: 500;
+  color: white;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.card-body .adminPanelBtn:hover {
+  background-color: #ffffff;
+  color: black;
+  border: 3px solid #fc8019;
+  font-weight: 500;
+}
