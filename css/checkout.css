@@ -1,0 +1,82 @@
+.mainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainContainer .submitDetailsContainer {
+  width: 70%;
+  padding: 15px 100px 15px 15px;
+}
+
+.mainContainer .summaryContainer {
+  width: 30%;
+  padding: 15px;
+}
+
+.form-container {
+  padding: 0;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 575px) {
+  .mainContainer {
+    margin: 0 auto;
+    padding: 25px;
+  }
+
+  .mainContainer .submitDetailsContainer {
+    width: 100%;
+    padding: 0;
+    order: 2;
+  }
+
+  .mainContainer .summaryContainer {
+    order: 1;
+    width: 100%;
+    padding: 0;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+}
+
+form .form-container .form-group {
+  padding: 0.2%;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.form-container .summaryContainer p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.form-group .adminPanelBtn {
+  background-color: #fc8019;
+  border: 3px solid #fc8019;
+  font-weight: 500;
+  color: white;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.form-group .adminPanelBtn:hover {
+  background-color: #ffffff;
+  color: black;
+  border: 3px solid #fc8019;
+  font-weight: 500;
+}

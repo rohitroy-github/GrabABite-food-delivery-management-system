@@ -1,6 +1,6 @@
-<!-- FoodOrderComponent -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!-- Important to make website responsive -->
@@ -8,13 +8,15 @@
     <title>Restaurant Website</title>
     <!-- Link our CSS file -->
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/categories.css">
+    <link rel="stylesheet" href="./css/checkout.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
 </head>
 
 <body>
-
     <!-- navbarPortion -->
     <?php include './front-end-partials/menu.php'; ?>
-
     <!-- checkForFoodID -->
     <?php if (isset($_GET['food_id'])) {
         // getFoodID&Details
@@ -32,126 +34,137 @@
             // $id = $row['id'];
             $title = $row['title'];
             $price = $row['price'];
-            // $description = $row['description'];
+            $description = $row['description'];
             $image_name = $row['image_name'];
-        } else {
-            // getBackToHomePage
-            header('location:' . HOMEURL);
         }
     } else {
         // getBackToHomePage
         header('location:' . HOMEURL);
     } ?>
+    <div class="container">
+        <h2 class=" text-center">Checkout</h2>
+        <div class="mainContainer">
+            <div class="row">
+                <div class="col-md-8 submitDetailsContainer">
+                    <form class="form-container" action="" method="POST">
+                        <div class="form-group">
+                            <h4 class=" text-left">Please fill out delivery details !</h4>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-name">Name</label>
+                            <input type="text" class="form-control" id="customer-name" name="full-name"
+                                placeholder="Enter your full name ?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-address">Address</label>
+                            <textarea class="form-control" id="customer-address" name="address"
+                                placeholder="Enter your address ?" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-contact-number">Contact Number</label>
+                            <input type="tel" class="form-control" id="customer-contact-number" name="contact"
+                                placeholder="Enter your contact number ?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter your email ?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="qty">Quantity</label>
+                            <input type="number" class="form-control" id="customer-email" name="qty"
+                                placeholder="Enter number of plates ?" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn adminPanelBtn" name="submit">Submit</button>
+                        </div>
 
-    <!-- fOOD sEARCH Section Starts Here -->
-    <section class="food-menu ">
-        <div class="container foodOrderSection">
-            <!-- formSection -->
-            <div class="orderContainer">
-                    <h3 class="text-left">Please fill up delivery details.</h3>
-                    <form action="" method="POST" class="order">
-
-                            <!-- <div class="food-menu-desc"> -->
-                            <!-- <legend>Food Item</legend> -->
-                                <h3 class="primary-color">Dish : <?php echo $title; ?></h3>
-                                <input type="hidden" name="food" value="<?php echo $title; ?>"/>
-                                <p class="food-price">Price : ₹ <?php echo $price; ?></p>
-                                <div class="order-label">Quantity</div>
-                                <input type="number" name="qty" class="input-responsive" value="1" required>
-                            <!-- </div> -->
-                        <!-- <fieldset> -->
-                            <!-- <legend>Delivery Details :</legend> -->
-                            <div class="order-label">Full Name</div>
-                            <input type="text" name="full-name" placeholder="E.g. Vijay Thapa" class="input-responsive" required>
-
-                            <div class="order-label">Phone Number</div>
-                            <input type="tel" name="contact" placeholder="E.g. 9843xxxxxx" class="input-responsive" required>
-
-                            <div class="order-label">Email</div>
-                            <input type="email" name="email" placeholder="E.g. hi@vijaythapa.com" class="input-responsive" required>
-
-                            <div class="order-label">Address</div>
-                            <textarea name="address" rows="5" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
-
-                            <input type="submit" name="submit" value="CONFIRM ORDER" class="btn btn-primary">
-                        <!-- </fieldset> -->
-
-                                <!-- checkWhetherSubmitButtonIsClicked? -->
-                <?php if (isset($_POST['submit'])) {
-                    // fetchAllData
-                    $food = $_POST['food'];
-                    $price = $_POST['price'];
-                    $qty = $_POST['qty'];
-                    $total = $price * $qty;
-                    $order_date = date('Y-m-d h:i:sa');
-                    $status = 'order-placed';
-                    $customer_name = $_POST['full-name'];
-                    $customer_contact = $_POST['contact'];
-                    $customer_email = $_POST['email'];
-                    $customer_address = $_POST['address'];
-                    // saveTheOrderInDB
-                    $sql_order = "INSERT INTO tbl_order SET 
-                        food = '$food', 
-                        price = '$price', 
-                        qty = '$qty', 
-                        total = '$total', 
-                        order_date = '$order_date', 
-                        status = '$status',
-                        customer_name = '$customer_name', 
-                        customer_contact = '$customer_contact',  
-                        customer_email = '$customer_email', 
-                        customer_address = '$customer_address'";
-                    // execute
-                    $res_order = mysqli_query($conn, $sql_order);
-                    // checkForQuerySuccess
-                    if ($res_order == true) {
-                        $_SESSION['order-placed'] =
-                            "<div class='success-message'>Food order placed successfully !</div>";
-                        header('location:' . HOMEURL);
-                    } else {
-                        // failedToSaveOrder
-                        $_SESSION['order-not-placed'] =
-                            "<div class='error-message'>Failed to place your order !</div>";
-                        header('location:' . HOMEURL);
-                    }
-                } ?>
+                        <input type="hidden" name="price">
+                        <input type="hidden" name="title">
+                        <!-- POSTCode -->
+                        <?php if (isset($_POST['submit'])) {
+                            $_POST['price'] = $price;
+                            $_POST['title'] = $title;
+                            // fetchAllData
+                            $food = $_POST['title'];
+                            $price = $_POST['price'];
+                            $qty = $_POST['qty'];
+                            $total = intval($price) * intval($qty);
+                            $order_date = date('Y-m-d h:i:sa');
+                            $status = 'order-placed';
+                            $customer_name = $_POST['full-name'];
+                            $customer_contact = $_POST['contact'];
+                            $customer_email = $_POST['email'];
+                            $customer_address = $_POST['address'];
+                            // saveTheOrderInDB
+                            $sql_order = "INSERT INTO tbl_order SET 
+                                food = '$food', 
+                                price = '$price', 
+                                qty = '$qty', 
+                                total = '$total', 
+                                order_date = '$order_date', 
+                                status = '$status',
+                                customer_name = '$customer_name', 
+                                customer_contact = '$customer_contact',  
+                                customer_email = '$customer_email', 
+                                customer_address = '$customer_address'";
+                            // execute
+                            $res_order = mysqli_query($conn, $sql_order);
+                            // checkForQuerySuccess
+                            if ($res_order == true) {
+                                $_SESSION['order-placed'] =
+                                    "<div class='success-message'>Food order placed successfully !</div>";
+                                // header('location:' . HOMEURL);
+                            } else {
+                                // failedToSaveOrder
+                                $_SESSION['order-not-placed'] =
+                                    "<div class='error-message'>Failed to place your order !</div>";
+                                // header('location:' . HOMEURL);
+                            }
+                        } ?>
                     </form>
                 </div>
-
-                <div class="foorOrderSeparatorSection"></div>
-
-            <!-- summarySection -->
-            <div class="orderSummarySection">
-                <h3 class="text-left">Order Summary</h3>
-                <form class="order">
-                        <div class="food-menu-desc">
-                            <div class="order-label">Selected Dish : <?php echo $title; ?></div>
-                            <div class="order-label">Order Total : <?php echo $price; ?></div>
-                            <!-- <div class="order-label">Quantity</div> -->
-                            <!-- <p class="food-price"><?php echo $qty; ?></p> -->
-                        </div>
-                        <div class="orderSummaryFoodPicture">
-                            <!-- checkWhetherImageAvailableOrNot? -->
-                            <?php if ($image_name == '') {
-                                // imageNotAvailable
-                                // $_SESSION['no-food-image-available'] =
-                                //     'Image Unvailable !';
-                                // header('location:' . HOMEURL);
-                                echo "<div class='error-message'>Image not available at the moment !</div>";
-                            }
-                            // imageAvailable
-                            else {
-                                 ?>
-                                <img src="<?php echo HOMEURL; ?>images/food/<?php echo $image_name; ?>" alt="food-image" class="img-responsive img-circle">
-                                <?php
-                            } ?>
-                        </div>
-                </form>
+                <div class="col-md-4 summaryContainer">
+                    <div class="row">
+                        <form class="form-container">
+                            <div class="form-group">
+                                <h4 class=" text-left">Order summary !</h4>
+                            </div>
+                            <div class="form-group">
+                                <?php if ($image_name == '') { ?>
+                                <h6 class="text-center">Image not found !</h6>
+                                <?php } else { ?>
+                                <img src="<?php echo HOMEURL; ?>images/food/<?php echo $image_name; ?>"
+                                    class="img-fluid" alt="Food Image">
+                                <?php } ?>
+                            </div>
+                            <div class="form-group">
+                                <p>Item :
+                                    <?php echo $title; ?>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <p>
+                                    <?php echo $description; ?>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <p>Price :
+                                    <?php echo $price; ?>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-    <!-- fOOD sEARCH Section Ends Here -->
-    <!-- footer -->
+    </div>
+    <!-- footerPortion -->
     <?php include './front-end-partials/footer.php'; ?>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
