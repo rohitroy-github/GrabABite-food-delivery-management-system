@@ -44,10 +44,10 @@
                     unset($_SESSION['remove-image-file']);
                 }
 
-                if (isset($_SESSION['delete'])) {
-                    echo $_SESSION['delete'];
+                if (isset($_SESSION['delete-category'])) {
+                    echo $_SESSION['delete-category'];
                     // Ending session
-                    unset($_SESSION['delete']);
+                    unset($_SESSION['delete-category']);
                 }
 
                 if (isset($_SESSION['update-category'])) {
