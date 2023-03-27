@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/adminStyles.css">
-    <title>GrabABite - Manage Food</title>
+    <title>Manage Orders</title>
 </head>
 
 <body>
@@ -24,6 +24,14 @@
             <h2 style="font-weight: 500; text-align: center;">
                 <b>Manage Orders</b>
             </h2>
+
+            <div>
+              <?php if (isset($_SESSION['update-order'])) {
+                  echo $_SESSION['update-order'];
+                  // Ending session
+                  unset($_SESSION['update-order']);
+              } ?>
+            </div>
 
             <div class="table-responsive">
                 <table class="table">
