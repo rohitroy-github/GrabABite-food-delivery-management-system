@@ -79,12 +79,18 @@
               <td>
                 <?php
                 $sql_revenue =
-                    'SELECT SUM(total) AS Total FROM tbl_order WHERE status="order-placed"';
+                    'SELECT SUM(total) AS Total FROM tbl_order WHERE status="delivered"';
                 $res_revenue = mysqli_query($conn, $sql_revenue);
                 $row_revenue = mysqli_fetch_assoc($res_revenue);
                 $tota_revenue = $row_revenue['Total'];
                 ?>
-                <h3><?php echo $tota_revenue; ?></h3>
+              <h3>
+                  <?php if ($tota_revenue != '') {
+                      echo $tota_revenue;
+                  } else {
+                      echo '0.0';
+                  } ?>
+              </h3>
               </td>
             </tr>
           </tbody>

@@ -89,14 +89,17 @@
     $count = mysqli_num_rows($res);
 
     if ($count == 1) {
-        $_SESSION['login'] = 'Login Success !';
+        $_SESSION['login'] =
+            '<p class="text-center">You have successfully logged in !</p>';
 
         // Login session check
         $_SESSION['user'] = $username;
 
         header('location:' . HOMEURL . 'admin/');
     } else {
-        $_SESSION['login'] = 'Login Failed !';
+        $_SESSION['login'] =
+            '<p class="text-center">Failed to login | Wrong credentials !</p>';
+
         header('location:' . HOMEURL . 'admin/login.php');
     }
 }
