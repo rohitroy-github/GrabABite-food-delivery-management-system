@@ -54,7 +54,7 @@ include './partials/login-check.php';
                         placeholder="Enter a username ?" value="<?php echo $username; ?>" />
                 </div>
                 <button name="submit" type="submit" class="btn btn-primaryColor" value="update-admin">
-                    Login
+                    Update Admin
                 </button>
 
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
