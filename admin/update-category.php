@@ -1,220 +1,195 @@
-<!-- Updating Category @DB -->
+<?php
+include '../config/constants.php';
+include './partials/login-check.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/admin.css" />
+    <title>Update Category</title>
+</head>
 
-    <!-- Add Bootstrap Code -->
+<body>
+    <div class="container">
+        <div class="col-md-6 col-lg-6">
+            <?php if (isset($_GET['id'])) {
+                $id = $_GET['id'];
 
-    <title>Update Category Page</title>
-  </head>
-  <body>
-    <!-- Menu Section -->
+                $sql = "SELECT * FROM tbl_category WHERE id=$id";
 
-    <?php include 'partials/menu.php'; ?>
+                $res = mysqli_query($conn, $sql);
 
-    <!-- Main Content Section-->
+                $count = mysqli_num_rows($res);
 
-    <div class="main-content">
-      <div class="wrapper">
-        <h3>Update Category</h3>
+                if ($count == 1) {
+                    $row = mysqli_fetch_assoc($res);
 
-<?php if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+                    $title = $row['title'];
+                    $current_image = $row['image_name'];
+                    $featured = $row['featured'];
+                    $active = $row['active'];
+                } else {
+                    // If no data is found redirect to manage-admin page with session message
+                    $_SESSION['no-category-found'] =
+                        'Selected category does not exist !';
+                    header('location:' . HOMEURL . 'admin/manage-category.php');
+                }
+            } else {
+                header('location:' . HOMEURL . 'admin/manage-category.php');
+            } ?>
+            <form class="login-form" action="" method="POST" enctype="multipart/form-data">
+                <h2 class="text-center">Update Category</h2>
+                <br />
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input name="title" type="text" class="form-control" id="title" placeholder="Enter new title ?"
+                        value="<?php echo $title; ?>" />
+                </div>
+                <div class="form-group">
+                    <label for="image">Current Image</label>
+                    <?php if ($current_image != '') { ?>
+                    <img src="<?php echo HOMEURL; ?>images/category/<?php echo $current_image; ?>" width="100px"
+                        height="auto" alt="Current Image">
+                    <?php } else {echo '<p>Image not uploaded !</p>';} ?>
+                </div>
+                <div class="form-group">
+                    <label for="image">New Image</label>
+                    <input name="image" type="file" id="image" placeholder="Upload new category image ?" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Featured ?</label>
+                    <input <?php if ($featured == 'Yes') {
+                        echo 'checked';
+                    } ?> name="featured" type="radio"
+                    id="featured" value="Yes" /> Yes
 
-    $sql = "SELECT * FROM tbl_category WHERE id=$id";
+                    <input <?php if ($featured == 'No') {
+                        echo 'checked';
+                    } ?> name="featured" type="radio"
+                    id="featured" value="No" /> No
+                </div>
+                <div class="form-group">
+                    <label for="password">Active ?</label>
+                    <input <?php if ($active == 'Yes') {
+                        echo 'checked';
+                    } ?> name="active" type="radio" id="active"
+                    value="Yes" /> Yes
 
-    $res = mysqli_query($conn, $sql);
+                    <input <?php if ($active == 'No') {
+                        echo 'checked';
+                    } ?> name="active" type="radio" id="active"
+                    value="No" /> No
+                </div>
+                <button name="submit" type="submit" class="btn btn-primaryColor" value="update-admin">
+                    Update Category
+                </button>
 
-    $count = mysqli_num_rows($res);
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
+            </form>
+            <?php if (isset($_POST['submit'])) {
+                // Store in variables
+                $id = $_POST['id'];
+                $title = $_POST['title'];
+                $current_image = $_POST['current_image'];
+                $featured = $_POST['featured'];
+                $active = $_POST['active'];
 
-    if ($count == 1) {
-        $row = mysqli_fetch_assoc($res);
+                if (isset($_FILES['image']['name'])) {
+                    $image_name = $_FILES['image']['name'];
 
-        $title = $row['title'];
-        $current_image = $row['image_name'];
-        $featured = $row['featured'];
-        $active = $row['active'];
-    }
-} else {
-    // If no data is found redirect to manage-admin page with session message
+                    if ($image_name != '') {
+                        $ext = explode('.', $image_name);
 
-    $_SESSION['no-category-found'] = 'Selected Category Not Found !';
-    header('location:' . HOMEURL . 'admin/manage-category.php');
-} ?>
-        <form action="" method="POST" enctype="multipart/form-data">
-          <!-- enctype="multipart/form-data" >>> To Add Image File In Form -->
+                        $extension = end($ext);
 
-          <table class="update-category-tbl-30">
-            <tr>
-              <td>Title :</td>
-              <td>
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Enter New Title ?"
-                  value="<?php echo $title; ?>"
-                />
-              </td>
-            </tr>
+                        $image_name =
+                            'food_category_' . $title . '.' . $extension;
 
-            <tr>
-              <td>Current Image :</td>
-              <td>
-                <!-- Old Image is displayed -->
-                <?php if ($current_image != '') { ?>
-    <img src="<?php echo HOMEURL; ?>images/category/<?php echo $current_image; ?>" width="100px">
-    <?php } else {echo "<div class='left-alligned-message'>Image Not Uploaded !</div>";} ?>
-              </td>
-            </tr>
+                        $source_path = $_FILES['image']['tmp_name'];
 
-            <tr>
-              <td>New Image :</td>
-              <td>
-                <input
-                  type="file"
-                  name="image"
-                  placeholder="New Category Image ?"
-                />
-              </td>
-            </tr>
+                        $destination_path = '../images/category/' . $image_name;
 
-            <tr>
-              <td>Featured :</td>
-              <td>
-                <input <?php if ($featured == 'Yes') {
-                    echo 'checked';
-                } ?> type="radio" name="featured" value="Yes" />
-                Yes
+                        $upload = move_uploaded_file(
+                            $source_path,
+                            $destination_path
+                        );
+                        // uploaded?
+                        if ($upload == false) {
+                            // failed
+                            $_SESSION['upload-image-failed'] =
+                                '<p class="text-center">Failed to upload image !</p>';
+                            header(
+                                'location:' .
+                                    HOMEURL .
+                                    'admin/manage-category.php'
+                            );
+                            die();
+                        }
+                        // removeCurrentImage
+                        if ($current_image != '') {
+                            $removePath =
+                                '../images/category/' . $current_image;
+                            $remove = unlink($removePath);
+                            // removed?
+                            if ($remove == false) {
+                                $_SESSION['failed-remove'] =
+                                    '<p class="text-center">Failed to remove current image !</p>';
+                                header(
+                                    'location:' .
+                                        HOMEURL .
+                                        'admin/manage-category.php'
+                                );
+                                die();
+                            }
+                        }
+                    } else {
+                        $image_name = $current_image;
+                    }
+                } else {
+                    $image_name = $current_image;
+                }
 
-                <input <?php if ($featured == 'No') {
-                    echo 'checked';
-                } ?> type="radio" name="featured" value="No" />
-                No
-              </td>
-            </tr>
+                // Set SQL query
+                $sql_update = "UPDATE tbl_category SET
+              title = '$title',
+              image_name = '$image_name',
+              featured = '$featured',
+              active = '$active'
+              WHERE id=$id
+              ";
 
-            <tr>
-              <td>Active :</td>
-              <td>
-                <input <?php if ($active == 'Yes') {
-                    echo 'checked';
-                } ?> type="radio" name="active" value="Yes" />
-                Yes
+                $res_update = mysqli_query($conn, $sql_update);
 
-                <input <?php if ($active == 'No') {
-                    echo 'checked';
-                } ?> type="radio" name="active" value="No" />
-                No
-              </td>
-            </tr>
+                // Check whether data is inserted ?
 
-            <tr>
-              <td colspan="2">
-                <input type="hidden" name="current_image" value="<?php echo $current_image; ?>" />
-                <input type="hidden" name="id" value="<?php echo $id; ?>" />
-
-                <input
-                  type="submit"
-                  name="submit"
-                  value="Update Category"
-                  class="btn-table"
-                  style="text-align: center"
-                />
-              </td>
-            </tr>
-          </table>
-        </form>
-      </div>
+                if ($res_update == true) {
+                    // Data Insertion Successfull !
+                    $_SESSION['add-category'] =
+                        '<p class="text-center">Category updated successfully !</p>';
+                    // Redirect to ManageAdmin Page
+                    header('location:' . HOMEURL . 'admin/manage-category.php');
+                } else {
+                    // Data Insertion Failed !
+                    $_SESSION['add-category'] =
+                        '<p class="text-center">Failed to update category !</p>';
+                    // Redirect to addAdmin Page again
+                    header('location:' . HOMEURL . 'admin/manage-category.php');
+                }
+            } ?>
+        </div>
     </div>
 
-    <?php if (isset($_POST['submit'])) {
-        $id = $_POST['id'];
-        $title = $_POST['title'];
-        $current_image = $_POST['current_image'];
-        $featured = $_POST['featured'];
-        $active = $_POST['active'];
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
 
-        //Upload Image
-        if (isset($_FILES['image']['name'])) {
-            // Auto-Rename our images
-            $new_image = $_FILES['image']['name'];
-
-            if ($new_image != '') {
-                $ext = explode('.', $new_image);
-
-                $extension = end($ext);
-
-                $image_name_renamed =
-                    'food_category_' . $title . '.' . $extension;
-
-                $source_path = $_FILES['image']['tmp_name'];
-
-                $destination_path = '../images/category/' . $image_name_renamed;
-
-                $upload = move_uploaded_file($source_path, $destination_path);
-
-                // Check Uploaded/ Not ?
-
-                if ($upload == false) {
-                    // If upload failed ?
-
-                    $_SESSION['failed-to-update-upload-category-image'] =
-                        'Failed To Upload Category Image !';
-                    header('location:' . HOMEURL . 'admin/manage-category.php');
-
-                    // Stop Processing
-                    die();
-                } else {
-                    $remove_path = '../images/category/' . $current_image;
-
-                    $remove_image = unlink($remove_path);
-
-                    if ($remove_image == false) {
-                        $_SESSION[
-                            'failed-to-remove-current-category-image-file'
-                        ] = 'Failed To Remove Current Image !';
-                        header(
-                            'location:' . HOMEURL . 'admin/manage-category.php'
-                        );
-                        // Stop all further procedure !
-                        die();
-                    } else {
-                        $image_name = $image_name_renamed;
-                    }
-                }
-            }
-        } else {
-            // Upload Rejected !
-            // keepingThePreviousImage
-            $image_name = $current_image;
-        }
-
-        $sql2 = "UPDATE tbl_category SET
-        title='$title',
-        image_name='$image_name',
-        featured='$featured',
-        active='$active'
-        WHERE id=$id
-        ";
-
-        $res2 = mysqli_query($conn, $sql2);
-
-        if ($res2 == true) {
-            $_SESSION['update-category'] = 'Category Updated Successfully !';
-            header('location:' . HOMEURL . 'admin/manage-category.php');
-        } else {
-            $_SESSION['update-category'] = 'Category Updation Failed !';
-            header('location:' . HOMEURL . 'admin/manage-category.php');
-        }
-    } ?>
-    <!-- Footer Section -->
-
-    <?php include 'partials/footer.php'; ?>
-  </body>
 </html>

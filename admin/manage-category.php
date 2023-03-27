@@ -70,6 +70,11 @@
                     unset($_SESSION['failed-to-update-upload-category-image']);
                 }
 
+                if (isset($_SESSION['failed-remove'])) {
+                    echo $_SESSION['failed-remove'];
+                    unset($_SESSION['failed-remove']);
+                }
+
                 if (
                     isset(
                         $_SESSION[
