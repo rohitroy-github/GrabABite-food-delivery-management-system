@@ -47,10 +47,10 @@
                   // Ending session
                   unset($_SESSION['failed-to-delete-food-item-image']);
               }
-              if (isset($_SESSION['delete-food-item'])) {
-                  echo $_SESSION['delete-food-item'];
+              if (isset($_SESSION['delete'])) {
+                  echo $_SESSION['delete'];
                   // Ending session
-                  unset($_SESSION['delete-food-item']);
+                  unset($_SESSION['delete']);
               }
               if (isset($_SESSION['failed-to-update-upload-image'])) {
                   echo $_SESSION['failed-to-update-upload-image'];

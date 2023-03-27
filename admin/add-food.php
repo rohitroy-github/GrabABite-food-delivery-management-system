@@ -174,7 +174,7 @@ include './partials/login-check.php';
                 // If upload failed ?
 
                 $_SESSION['food-image-upload-failed'] =
-                    'Failed To Upload Image !';
+                    '<p class="text-center">Failed to upload selected image !</p>';
                 header('location:' . HOMEURL . 'admin/add-food.php');
 
                 // Stop Processing
@@ -200,14 +200,16 @@ include './partials/login-check.php';
     if ($res2 == true) {
         // Data Insertion Successfull !
 
-        $_SESSION['add-food'] = 'Food Item Added Successfully !';
+        $_SESSION['add-food'] =
+            '<p class="text-center">Menu item added successfully !</p>';
 
         // Redirect to ManageAdmin Page
         header('location:' . HOMEURL . 'admin/manage-food.php');
     } else {
         // Data Insertion Failed !
 
-        $_SESSION['add-food'] = 'Failed To Add New Food Item !';
+        $_SESSION['add-food'] =
+            '<p class="text-center">Failed to delete menu item !</p>';
 
         // Redirect to addAdmin Page again
         header('location:' . HOMEURL . 'admin/add-food.php');

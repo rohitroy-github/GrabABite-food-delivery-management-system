@@ -12,8 +12,8 @@ if (isset($_GET['id']) and isset($_GET['image_name'])) {
         $path = '../images/food/' . $image_name;
         $remove_image = unlink($path);
         if ($remove_image == false) {
-            $_SESSION['failed-to-delete-food-item-image'] =
-                'Failed To Delete Image';
+            $_SESSION['delete'] =
+                '<p class="text-center">Failed to delete menu item | Image cannot be deleted !</p>';
             header('location:' . HOMEURL . 'admin/manage-food.php');
             // Stop all further procedure !
             die();
@@ -23,13 +23,13 @@ if (isset($_GET['id']) and isset($_GET['image_name'])) {
             $res = mysqli_query($conn, $sql);
 
             if ($res == true) {
-                $_SESSION['delete-food-item'] =
-                    'Food item deleted successfully !';
+                $_SESSION['delete'] =
+                    '<p class="text-center">Menu item deleted successfully !</p>';
                 //Redirect
                 header('location:' . HOMEURL . 'admin/manage-food.php');
             } else {
-                $_SESSION['delete-food-item'] =
-                    'Food item deletion unsuccessful !';
+                $_SESSION['delete'] =
+                    '<p class="text-center">Failed to delete menu item !</p>';
                 header('location:' . HOMEURL . 'admin/manage-food.php');
             }
         }
