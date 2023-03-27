@@ -143,10 +143,10 @@
         //Upload Image
         if (isset($_FILES['image']['name'])) {
             // Auto-Rename our images
-            $image_name = $_FILES['image']['name'];
+            $new_image = $_FILES['image']['name'];
 
-            if ($image_name != '') {
-                $ext = explode('.', $image_name);
+            if ($new_image != '') {
+                $ext = explode('.', $new_image);
 
                 $extension = end($ext);
 
@@ -170,11 +170,7 @@
 
                     // Stop Processing
                     die();
-                }
-
-                // Remove image from variable/ folder !
-
-                if ($new_image != '') {
+                } else {
                     $remove_path = '../images/category/' . $current_image;
 
                     $remove_image = unlink($remove_path);
@@ -186,13 +182,12 @@
                         header(
                             'location:' . HOMEURL . 'admin/manage-category.php'
                         );
-
                         // Stop all further procedure !
                         die();
+                    } else {
+                        $image_name = $image_name_renamed;
                     }
                 }
-            } else {
-                $image_name = $current_image;
             }
         } else {
             // Upload Rejected !
@@ -202,7 +197,7 @@
 
         $sql2 = "UPDATE tbl_category SET
         title='$title',
-        image_name='$image_name_renamed',
+        image_name='$image_name',
         featured='$featured',
         active='$active'
         WHERE id=$id

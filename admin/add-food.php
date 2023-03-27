@@ -43,8 +43,8 @@ include './partials/login-check.php';
                 </div>
                 <div class="form-group">
                     <label for="description">Dish Description</label>
-                    <input name="description" type="text" class="form-control" id="description"
-                        placeholder="Enter a description ?" required />
+                    <textarea name="description" type="text" class="form-control" id="description"
+                        placeholder="Enter a description ?" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="price">Price</label>
@@ -193,8 +193,6 @@ include './partials/login-check.php';
     $sql2 = "INSERT INTO tbl_food SET title = '$title',description = '$description',price = $price,image_name = '$image_name_renamed',category_id = $category,featured = '$featured',active = '$active'";
 
     // Execute query into database
-
-    // $res = mysqli_query($conn, $sql) or die(mysqli_error());
     $res2 = mysqli_query($conn, $sql2);
 
     // Check whether data is inserted ?
