@@ -71,7 +71,6 @@ brush up my <b>PHP & MYSQL</b> skills.
 <!-- Tech Stack Used -->
 <b>Tech Stack :</b>
 <br />
-<br />
 <ul>
     <b>
         <li>HTML</li>
