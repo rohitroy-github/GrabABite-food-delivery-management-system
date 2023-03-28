@@ -30,10 +30,12 @@ brush up my <b>PHP & MYSQL</b> skills.
 <br />
 <br />
 <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>Bootstarp</li>
-    <li>PHP</li>
-    <li>MySQL</li>
+    <b>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Bootstarp</li>
+        <li>PHP</li>
+        <li>SQL (Database : MySQL)</li>
+    </b>
 </ul>
 This project is currently <b>under development</b> using my Localhost !
