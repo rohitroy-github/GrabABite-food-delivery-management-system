@@ -7,7 +7,7 @@ brush up my <b>PHP & MYSQL</b> skills.
 </>
 <br />
 <br />
-<b>Project Work Video (Loom) : https://www.loom.com/share/38e7ea22f3904d12a60a7b23ddb6dc9a</b>
+<b>Project Work Video (Loom) : https://www.loom.com/share/3242d871e71d466292b9f0d5fee7c898</b>
 <br />
 <br />
 <b>Project Snapshots :</b>
