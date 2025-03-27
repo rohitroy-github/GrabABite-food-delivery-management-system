@@ -31,41 +31,18 @@ brush up my <b>PHP & MYSQL</b> skills.
 <b>Project Work Video (Loom) : https://www.loom.com/share/3242d871e71d466292b9f0d5fee7c898</b>
 <br />
 <br />
-<b>Project Snapshots :</b>
-<br />
-<br />
 
-![Screenshot (269)](https://user-images.githubusercontent.com/68563695/228329646-f1b9ae47-02c4-4dfc-a9bc-cf4b448260b8.png)
+---
 
-<br />
-<br />
+## Snapshots
 
-![Screenshot (270)](https://user-images.githubusercontent.com/68563695/228329583-17eecbb4-5c84-4ccf-bcbc-26e8af476705.png)
+| ![1](https://github.com/user-attachments/assets/f1b9ae47-02c4-4dfc-a9bc-cf4b448260b8) | ![2](https://github.com/user-attachments/assets/17eecbb4-5c84-4ccf-bcbc-26e8af476705) |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| ![3](https://github.com/user-attachments/assets/79983300-0099-40af-a2d0-b09baac66213) | ![4](https://github.com/user-attachments/assets/339f49b7-4144-4a86-bb8b-676e5651fde1) |
+| ![5](https://github.com/user-attachments/assets/ed19a303-45cd-4554-ba92-1a1a854e7784) | ![6](https://github.com/user-attachments/assets/21e11d1a-e5e2-4ebc-ad2e-c1ab0b1822be) |
+| ![7](https://github.com/user-attachments/assets/fb896223-465b-4c80-81b6-ec344e7ee387) |                                                                                      |
 
-<br />
-<br />
-
-![Screenshot (271)](https://user-images.githubusercontent.com/68563695/228329691-79983300-0099-40af-a2d0-b09baac66213.png)
-
-<br />
-<br />
-
-![Screenshot (272)](https://user-images.githubusercontent.com/68563695/228329737-339f49b7-4144-4a86-bb8b-676e5651fde1.png)
-
-<br />
-<br />
-
-![Screenshot (273)](https://user-images.githubusercontent.com/68563695/228329792-ed19a303-45cd-4554-ba92-1a1a854e7784.png)
-
-<br />
-<br />
-
-![Screenshot (274)](https://user-images.githubusercontent.com/68563695/228329848-21e11d1a-e5e2-4ebc-ad2e-c1ab0b1822be.png)
-
-<br />
-<br />
-
-![Screenshot (275)](https://user-images.githubusercontent.com/68563695/228329872-fb896223-465b-4c80-81b6-ec344e7ee387.png)
+---
 
 <br />
 <!-- Tech Stack Used -->
