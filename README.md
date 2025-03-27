@@ -1,10 +1,9 @@
-<h2>GrabABite</h2>
-<h3>Food Delivery Management System | Food Delivery App</h3>
-GrabABite is a <b>PHP Project</b> cloning a <b>Food Delivery Application</b> using <b>PHP</b>. I made this Project to
-brush up my <b>PHP & MYSQL</b> skills.
-</>
-<br />
-<br />
+# GrabABite
+
+**Food Delivery Management System | Food Delivery App**  
+
+GrabABite is a **PHP-based food delivery application** that replicates a real-world **food ordering and delivery system**. This project was developed to enhance my skills in **PHP & MySQL**, focusing on backend development, database management, and dynamic web applications.
+
 ---
 
 ## Features
