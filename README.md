@@ -5,32 +5,28 @@ brush up my <b>PHP & MYSQL</b> skills.
 </>
 <br />
 <br />
-<b>Application Features : </b>
-<br />
-<br />
-<b>Client Side :</b>
-<ul>
-    <b>
-        <li>Checkout food items.</li>
-        <li>Checkout food categories.</li>
-        <li>Search for food items.</li>
-        <li>Order food items.</li>
-    </b>
-</ul>
-<b>Admin Side :</b>
-<ul>
-    <b>
-        <li>Dashboard having buisness summary.</li>
-        <li>Add, update, delete admin.</li>
-        <li>Add, update, delete menu items.</li>
-        <li>Add, update, delete menu categories.</li>
-        <li>Update menu orders.</li>
-    </b>
-</ul>
-<br />
-<b>Project Work Video (Loom) : https://www.loom.com/share/3242d871e71d466292b9f0d5fee7c898</b>
-<br />
-<br />
+---
+
+## Features
+
+### Client Side  
+- Checkout food items  
+- Browse food categories  
+- Search for food items  
+- Order food items  
+
+### Admin Side  
+- Dashboard with business summary  
+- Add, update, delete admins  
+- Add, update, delete menu items  
+- Add, update, delete menu categories  
+- Update menu orders  
+
+---
+
+## Project Demo
+
+🎥 **Loom Video**: [Watch Here](https://www.loom.com/share/3242d871e71d466292b9f0d5fee7c898)  
 
 ---
 
@@ -44,17 +40,12 @@ brush up my <b>PHP & MYSQL</b> skills.
 
 ---
 
-<br />
-<!-- Tech Stack Used -->
-<b>Tech Stack :</b>
-<br />
-<ul>
-    <b>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>Bootstarp</li>
-        <li>PHP</li>
-        <li>SQL (Database : MySQL)</li>
-    </b>
-</ul>
+## Tech Stack
+
+- **Frontend**: HTML, CSS, Bootstrap  
+- **Backend**: PHP  
+- **Database**: MySQL (SQL)  
+
+---
+
 This project is currently <b>under development</b> using my Localhost !
