@@ -4,6 +4,8 @@
 
 GrabABite is a **PHP-based food delivery application** that replicates a real-world **food ordering and delivery system**. This project was developed to enhance my skills in **PHP & MySQL**, focusing on backend development, database management, and dynamic web applications.
 
+**Project can be deployed on localhost for testing currently.**
+
 ---
 
 ## Features
@@ -46,5 +48,3 @@ GrabABite is a **PHP-based food delivery application** that replicates a real-wo
 - **Database**: MySQL (SQL)  
 
 ---
-
-This project is currently <b>under development</b> using my Localhost !
