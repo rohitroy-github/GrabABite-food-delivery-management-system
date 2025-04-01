@@ -1,22 +1,16 @@
 <!-- Logout Functionality -->
 
 <?php
-
-include('../config/constants.php');
+include '../config/constants.php';
 
 // Destroy the 'user' session !
 
-session_destroy(); 
+session_destroy();
 
-//Redirect
+$_SESSION['logout'] =
+    '<p class="text-center">You have successfully logged out !</p>';
 
-header('location:'.HOMEURL.'admin/login.php'); 
-
+header('location:' . HOMEURL . 'admin/login.php');
 ?> 
 
-<?php
-
-$_SESSION['logout'] = "Logout Successfull !"; 
-
-?>
 

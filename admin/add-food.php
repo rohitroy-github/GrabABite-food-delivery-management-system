@@ -67,15 +67,15 @@ include './partials/login-check.php';
                                 $id = $row['id'];
                                 $title = $row['title'];
                                 ?>
-                        <option value="<?php echo $id; ?>">
-                            <?php echo $title; ?>
-                        </option>
-                        <?php
+                                <option value="<?php echo $id; ?>">
+                                    <?php echo $title; ?>
+                                </option>
+                                <?php
                             }
                         } else {
-                             ?>
-                        <option value="0">No Category Found</option>
-                        <?php
+                            ?>
+                            <option value="0">No Category Found</option>
+                            <?php
                         }
                         ?>
                     </select>
